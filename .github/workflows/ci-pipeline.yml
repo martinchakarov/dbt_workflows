@@ -22,6 +22,8 @@ jobs:
           key: manifest
           fail-on-cache-miss: true
       - name: test
+        run: mv target/manifest.json .
+      - name: test
         run: ls
    #   - uses: actions/setup-python@v5
    #     with:
