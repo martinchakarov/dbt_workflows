@@ -1,9 +1,8 @@
 name: Transformations
 on:
-  # schedule:
-  #   - cron: "*/15 * * * *"
+  schedule:
+    - cron: "30 */6 * * *" # at minute 30 past every 6th hour
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 env:
@@ -15,16 +14,14 @@ jobs:
   production-run:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: dbt-deps
-        uses: mwhitaker/dbt-action@master
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          dbt_command: "dbt deps --target prod --profiles-dir ."
-      - name: dbt-seed
-        uses: mwhitaker/dbt-action@master
-        with:
-          dbt_command: "dbt build --target prod --profiles-dir ."
-      - name: dbt-docs-generate
-        uses: mwhitaker/dbt-action@master
-        with:
-          dbt_command: "dbt docs generate --target prod --profiles-dir ."
+          python-version: '3.9'
+          cache: 'pipenv'
+      - name: Install pipenv
+        run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
+      - run: pipenv install
+      - run: pipenv run dbt deps --target prod
+      - run: pipenv run dbt build --target prod
+      - run: pipenv run dbt docs generate
