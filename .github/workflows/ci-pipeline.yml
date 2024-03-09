@@ -1,7 +1,7 @@
-name: Transformations
+name: CI Pipeline
 on:
-  schedule:
-    - cron: "30 */6 * * *" # at minute 30 past every 6th hour
+  pull_request:
+    branches: [ "main" ]
 
   workflow_dispatch:
 
@@ -11,10 +11,16 @@ env:
   DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
 
 jobs:
-  production-run:
+  ci-run:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Restore manifest file
+        uses: actions/cache/restore@v3
+        with:
+          path: target/manifest.json
+          key: manifest
+          fail-on-cache-miss: true
       - uses: actions/setup-python@v5
         with:
           python-version: '3.9'
@@ -24,13 +30,7 @@ jobs:
       - name: Install Pipenv dependencies
         run: pipenv install
       - name: Install dbt dependenciees
-        run: pipenv run dbt deps --target prod
+        run: pipenv run dbt deps --target dev
       - name: Run and test models
-        run: pipenv run dbt build --target prod
-      - name: Generate documentation
-        run: pipenv run dbt docs generate
-      - name: Cache manifest file
-        uses: actions/cache/save@v3
-        with:
-          path: target/manifest.json
-          key: manifest
+        run: pipenv run dbt build --select "state:modified+" --state target/manifest.json --target dev
+
