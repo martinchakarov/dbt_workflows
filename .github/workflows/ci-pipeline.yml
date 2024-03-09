@@ -18,7 +18,7 @@ jobs:
       - name: Restore manifest file
         uses: actions/cache/restore@v3
         with:
-          path: manifest.json
+          path: target/manifest.json
           key: manifest
           fail-on-cache-miss: true
       - name: test
