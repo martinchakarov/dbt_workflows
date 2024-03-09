@@ -29,8 +29,8 @@ jobs:
         run: pipenv run dbt build --target prod
       - name: Generate documentation
         run: pipenv run dbt docs generate
-      - name: Store manifest
-        uses: actions/upload-artifact@v4
+      - name: Cache manifest file
+        uses: actions/cache@v3
         with:
-          name: manifest
           path: target/manifest.json
+          key: manifest
