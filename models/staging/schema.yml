@@ -1,0 +1,46 @@
+models:
+  - name: stg_customers
+    columns:
+      - name: id
+        tests:
+          - not_null
+          - unique
+      - name: first_name
+      - name: last_name
+      - name: gender
+      - name: email
+      - name: ip_address
+  - name: stg_orders
+    columns:
+      - name: id
+        tests:
+          - not_null
+          - unique
+      - name: date
+      - name: customer_id
+        tests:
+          - relationships:
+              to: ref('customers')
+              field: id
+  - name: stg_order_items
+    columns:
+      - name: order_id
+        tests:
+          - relationships:
+              to: ref('orders')
+              field: id
+      - name: product_id
+        tests:
+          - relationships:
+              to: ref('products')
+              field: id
+      - name: quantity
+  - name: stg_products
+    columns:
+      - name: id
+        tests:
+          - not_null
+          - unique
+      - name: name
+      - name: price
+      - name: currently_on_sale

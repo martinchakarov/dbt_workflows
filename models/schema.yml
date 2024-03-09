@@ -1,0 +1,29 @@
+sources:
+  - name: raw
+    database: dbt_database
+    schema: raw_data
+    tables:
+      - name: customers
+        columns:
+          - name: id
+          - name: first_name
+          - name: last_name
+          - name: gender
+          - name: email
+          - name: ip_address
+      - name: orders
+        columns:
+          - name: id
+          - name: date
+          - name: customer_id
+      - name: order_items
+        columns:
+          - name: order_id
+          - name: product_id
+          - name: quantity
+      - name: products
+        columns:
+          - name: id
+          - name: name
+          - name: price
+          - name: on_sale
