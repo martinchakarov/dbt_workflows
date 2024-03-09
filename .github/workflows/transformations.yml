@@ -23,10 +23,6 @@ jobs:
       - name: dbt-seed
         uses: mwhitaker/dbt-action@master
         with:
-          dbt_command: "dbt seed --target prod --profiles-dir ."
-      - name: dbt-build
-        uses: mwhitaker/dbt-action@master
-        with:
           dbt_command: "dbt build --target prod --profiles-dir ."
       - name: dbt-docs-generate
         uses: mwhitaker/dbt-action@master
