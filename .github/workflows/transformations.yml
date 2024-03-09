@@ -1,7 +1,7 @@
 name: Transformations
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "30 */6 * * *" # at minute 30 past every 6th hour
 
   workflow_dispatch:
 
