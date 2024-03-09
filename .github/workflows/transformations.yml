@@ -19,7 +19,7 @@ jobs:
       - name: Clear cache
         run: gh cache delete manifest
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
   production-run:
     runs-on: ubuntu-latest
     steps:
