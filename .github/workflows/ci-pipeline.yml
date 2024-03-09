@@ -18,7 +18,7 @@ jobs:
       - name: Restore manifest file
         uses: actions/cache/restore@v3
         with:
-          path: target/manifest.json
+          path: cache/manifest.json
           key: manifest
           fail-on-cache-miss: true
       - uses: actions/setup-python@v5
@@ -32,5 +32,5 @@ jobs:
       - name: Install dbt dependenciees
         run: pipenv run dbt deps --target dev
       - name: Run and test models
-        run: pipenv run dbt build --select "state:modified+" --state target/manifest.json --target dev
+        run: pipenv run dbt build --select "state:modified+" --state cache --target dev
 
