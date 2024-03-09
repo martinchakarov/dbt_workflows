@@ -21,21 +21,18 @@ jobs:
           path: target/manifest.json
           key: manifest
           fail-on-cache-miss: true
-      - name: test
+      - name: Move manifest file to root directory
         run: mv target/manifest.json .
-      - name: test
-        run: ls
-   #   - uses: actions/setup-python@v5
-   #     with:
-   #       python-version: '3.9'
-   #       cache: 'pipenv'
-   #   - name: Install Pipenv
-   #     run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
-   #   - name: Install Pipenv dependencies
-   #     run: pipenv install
-   #   - name: Install dbt dependenciees
-   #     run: pipenv run dbt deps --target dev
-   #   - name: Run and test models
-   #     run: pipenv run dbt build --select "state:modified+" --state cache --target dev
-#
-#
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+          cache: 'pipenv'
+      - name: Install Pipenv
+        run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
+      - name: Install Pipenv dependencies
+        run: pipenv install
+      - name: Install dbt dependenciees
+        run: pipenv run dbt deps --target dev
+      - name: Run and test models
+        run: pipenv run dbt build --select "state:modified+" --state . --target dev
+
