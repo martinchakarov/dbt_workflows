@@ -11,6 +11,15 @@ env:
   DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
 
 jobs:
+  clear-cache:
+    name: Clear manifest.json cache
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Clear cache
+        run: gh cache delete manifest
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
   production-run:
     runs-on: ubuntu-latest
     steps:
@@ -19,9 +28,18 @@ jobs:
         with:
           python-version: '3.9'
           cache: 'pipenv'
-      - name: Install pipenv
+      - name: Install Pipenv
         run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
-      - run: pipenv install
-      - run: pipenv run dbt deps --target prod
-      - run: pipenv run dbt build --target prod
-      - run: pipenv run dbt docs generate
+      - name: Install Pipenv dependencies
+        run: pipenv install
+      - name: Install dbt dependenciees
+        run: pipenv run dbt deps --target prod
+      - name: Run and test models
+        run: pipenv run dbt build --target prod
+      - name: Generate documentation
+        run: pipenv run dbt docs generate
+      - name: Cache manifest file
+        uses: actions/cache/save@v3
+        with:
+          path: target/manifest.json
+          key: manifest
