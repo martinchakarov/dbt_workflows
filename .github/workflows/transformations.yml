@@ -1,0 +1,38 @@
+name: Transformations
+on:
+  # schedule:
+  #   - cron: "*/15 * * * *"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+  DBT_USER: ${{ secrets.DBT_USER }}
+  DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
+
+jobs:
+  production-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: dbt-deps
+        uses: mwhitaker/dbt-action@master
+        with:
+          dbt_command: "dbt deps --target prod --profiles-dir ."
+      - name: dbt-seed
+        uses: mwhitaker/dbt-action@master
+        with:
+          dbt_command: "dbt seed --target prod --profiles-dir ."
+      - name: dbt-build
+        uses: mwhitaker/dbt-action@master
+        with:
+          dbt_command: "dbt build --target prod --profiles-dir ."
+      - name: dbt-docs-generate
+        uses: mwhitaker/dbt-action@master
+        with:
+          dbt_command: "dbt docs generate --target prod --profiles-dir ."
+      - name: dbt-docs-serve
+        uses: mwhitaker/dbt-action@master
+        with:
+          dbt_command: "dbt docs serve --target prod --profiles-dir ."
