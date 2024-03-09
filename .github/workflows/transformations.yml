@@ -37,6 +37,7 @@ jobs:
       - name: Install pipenv
         run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
       - run: pipenv install
-      - run: pipenv dbt deps --target prod
-      - run: pipenv dbt build --target prod
-      - run: pipenv dbt docs generate
+      - run: pipenv shell
+      - run: dbt deps --target prod
+      - run: dbt build --target prod
+      - run: dbt docs generate
