@@ -22,6 +22,14 @@ jobs:
       - name: Install pipenv
         run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
       - run: pipenv install
+      - name: Install dbt dependenciees
       - run: pipenv run dbt deps --target prod
+      - name: Run and test models
       - run: pipenv run dbt build --target prod
+      - name: Generate documentation
       - run: pipenv run dbt docs generate
+      - name: Store manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: manifest
+          path: target/manifest.json
