@@ -20,19 +20,19 @@ models:
       - name: customer_id
         tests:
           - relationships:
-              to: ref('customers')
+              to: ref('stg_customers')
               field: id
   - name: stg_order_items
     columns:
       - name: order_id
         tests:
           - relationships:
-              to: ref('orders')
+              to: ref('stg_orders')
               field: id
       - name: product_id
         tests:
           - relationships:
-              to: ref('products')
+              to: ref('stg_products')
               field: id
       - name: quantity
   - name: stg_products

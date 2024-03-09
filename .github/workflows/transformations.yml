@@ -32,7 +32,3 @@ jobs:
         uses: mwhitaker/dbt-action@master
         with:
           dbt_command: "dbt docs generate --target prod --profiles-dir ."
-      - name: dbt-docs-serve
-        uses: mwhitaker/dbt-action@master
-        with:
-          dbt_command: "dbt docs serve --target prod --profiles-dir ."
