@@ -1,9 +1,8 @@
 name: Transformations
 on:
-  # schedule:
-  #   - cron: "*/15 * * * *"
+  schedule:
+    - cron: "*/15 * * * *"
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 env:
@@ -15,20 +14,6 @@ jobs:
   production-run:
     runs-on: ubuntu-latest
     steps:
-  #    - uses: actions/checkout@v3
-  #    
-  #    - name: dbt-deps
-  #      uses: mwhitaker/dbt-action@master
-  #      with:
-  #        dbt_command: "dbt deps --target prod --profiles-dir ."
-  #    - name: dbt-build
-  #      uses: mwhitaker/dbt-action@master
-  #      with:
-  #        dbt_command: "dbt build --target prod --profiles-dir ."
-  #    - name: dbt-docs-generate
-  #      uses: mwhitaker/dbt-action@master
-  #      with:
-  #        dbt_command: "dbt docs generate --target prod --profiles-dir ."
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
