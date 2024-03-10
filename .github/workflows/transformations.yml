@@ -81,9 +81,9 @@ jobs:
           fail-on-cache-miss: true
       - name: Update documentation
         uses: actions/checkout@v4
-          with:
-            ref: gh-pages
-            run: |
-              git add --force target/manifest.json target/catalog.json target/index.html
-              git commit -m "Update documentation"
-              git push --set-upstream origin gh-pages 
+        with:
+          ref: gh-pages
+          run: |
+            git add --force target/manifest.json target/catalog.json target/index.html
+            git commit -m "Update documentation"
+            git push --set-upstream origin gh-pages 
