@@ -16,11 +16,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Clear cache
+      - name: Clear manifest cache
         run: gh cache delete manifest
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
+    - uses: actions/checkout@v4
+    - name: Clear catalog cache
+      run: gh cache delete catalog
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT }}
+    - uses: actions/checkout@v4
+    - name: Clear index cache
+      run: gh cache delete index
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT }}
   production-run:
+    needs: clear-cache
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -32,7 +43,7 @@ jobs:
         run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
       - name: Install Pipenv dependencies
         run: pipenv install
-      - name: Install dbt dependenciees
+      - name: Install dbt dependencies
         run: pipenv run dbt deps --target prod
       - name: Run and test models
         run: pipenv run dbt build --target prod
@@ -54,6 +65,7 @@ jobs:
           path: target/index.html
           key: index
   documentation-update:
+    needs: production-run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -79,3 +91,9 @@ jobs:
           path: target/index.html
           key: index
           fail-on-cache-miss: true
+      - name: Stage documentation files
+        run: git add --force target/manifest.json target/catalog.json target/index.html
+      - name: Commit documentation files
+        run: git commit -m "Update documentation"
+      - name: Push documentation files
+        run: git push --set-upstream origin gh-pages 
