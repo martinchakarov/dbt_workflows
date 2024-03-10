@@ -12,20 +12,15 @@ env:
 
 jobs:
   clear-cache:
-    name: Clear manifest.json cache
+    name: Clear cache
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Clear manifest cache
-        run: gh cache delete manifest
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
-      - name: Clear catalog cache
-        run: gh cache delete catalog
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
-      - name: Clear index cache
-        run: gh cache delete index
+        run: | 
+          gh cache delete manifest
+          gh cache delete catalog
+          gh cache delete index
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
   production-run:
@@ -38,9 +33,9 @@ jobs:
           python-version: '3.9'
           cache: 'pipenv'
       - name: Install Pipenv
-        run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
-      - name: Install Pipenv dependencies
-        run: pipenv install
+        run: |
+          curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
+          pipenv install
       - name: Install dbt dependencies
         run: pipenv run dbt deps --target prod
       - name: Run and test models
@@ -66,11 +61,6 @@ jobs:
     needs: production-run
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Delete old gh-pages branch
-        run: git branch #-D gh-pages
-      - name: Create a new gh-pages branch
-        run: git checkout -b gh-pages
       - name: Restore manifest file
         uses: actions/cache/restore@v3
         with:
@@ -89,9 +79,11 @@ jobs:
           path: target/index.html
           key: index
           fail-on-cache-miss: true
-      - name: Stage documentation files
-        run: git add --force target/manifest.json target/catalog.json target/index.html
-      - name: Commit documentation files
-        run: git commit -m "Update documentation"
-      - name: Push documentation files
-        run: git push --set-upstream origin gh-pages 
+      - name: Update documentation
+        uses: actions/checkout@v4
+          with:
+            ref: gh-pages
+            run: |
+              git add --force target/manifest.json target/catalog.json target/index.html
+              git commit -m "Update documentation"
+              git push --set-upstream origin gh-pages 
