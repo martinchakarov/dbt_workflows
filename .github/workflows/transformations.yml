@@ -85,6 +85,7 @@ jobs:
           fail-on-cache-miss: true
       - name: Update documentation
         run: |
+          mv target docs
           git config user.email "martin@chakarov.com"
           git config user.name "Martin"
           git add --force target/manifest.json target/catalog.json target/index.html
