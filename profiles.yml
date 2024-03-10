@@ -20,4 +20,14 @@ dbt_test:
       type: snowflake
       user: "{{ env_var('DBT_USER') }}"
       warehouse: dbt_warehouse
+    ci:
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      database: dbt_database
+      password: "{{ env_var('DBT_PASSWORD') }}"
+      role: dbt_role
+      schema: CI_SCHEMA
+      threads: 1
+      type: snowflake
+      user: "{{ env_var('DBT_USER') }}"
+      warehouse: dbt_warehouse
   target: dev
