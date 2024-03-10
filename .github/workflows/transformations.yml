@@ -20,16 +20,14 @@ jobs:
         run: gh cache delete manifest
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
-    - uses: actions/checkout@v4
-    - name: Clear catalog cache
-      run: gh cache delete catalog
-      env:
-        GITHUB_TOKEN: ${{ secrets.PAT }}
-    - uses: actions/checkout@v4
-    - name: Clear index cache
-      run: gh cache delete index
-      env:
-        GITHUB_TOKEN: ${{ secrets.PAT }}
+      - name: Clear catalog cache
+        run: gh cache delete catalog
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+      - name: Clear index cache
+        run: gh cache delete index
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
   production-run:
     needs: clear-cache
     runs-on: ubuntu-latest
