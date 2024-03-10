@@ -88,6 +88,6 @@ jobs:
           mv target docs
           git config user.email "martin@chakarov.com"
           git config user.name "Martin"
-          git add --force target/manifest.json target/catalog.json target/index.html
+          git add --force docs/manifest.json docs/catalog.json docs/index.html
           git commit -m "Update documentation"
           git push --set-upstream origin gh-pages 
