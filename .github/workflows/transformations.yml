@@ -82,7 +82,7 @@ jobs:
       - name: Update documentation
         uses: actions/checkout@v4
         with:
-          ref: gh-pages
+          ref: refs/heads/gh-pages
           run: |
             git add --force target/manifest.json target/catalog.json target/index.html
             git commit -m "Update documentation"
