@@ -36,4 +36,4 @@ jobs:
       - name: Run and test models
         run: pipenv run dbt build --select "state:modified+" --state . --target ci
       - name: Drop CI schema
-        run: pipenv run dbt run-operation post_ci_cleanup --args '{dry_run: false}' --target ci
+        run: pipenv run dbt run-operation post_ci_cleanup --args "{'dry_run': false}" --target ci
