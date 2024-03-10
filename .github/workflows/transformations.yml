@@ -85,6 +85,8 @@ jobs:
           fail-on-cache-miss: true
       - name: Update documentation
         run: |
+          git config user.email "martin@chakarov.com"
+          git config user.name "Martin"
           git add --force target/manifest.json target/catalog.json target/index.html
           git commit -m "Update documentation"
           git push --set-upstream origin gh-pages 
