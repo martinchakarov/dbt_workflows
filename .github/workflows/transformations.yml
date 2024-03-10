@@ -61,6 +61,10 @@ jobs:
     needs: production-run
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout documentation branch
+        uses: actions/checkout@v4
+        with:
+          ref: refs/heads/gh-pages
       - name: Restore manifest file
         uses: actions/cache/restore@v3
         with:
@@ -80,9 +84,6 @@ jobs:
           key: index
           fail-on-cache-miss: true
       - name: Update documentation
-        uses: actions/checkout@v4
-        with:
-          ref: refs/heads/gh-pages
           run: |
             git add --force target/manifest.json target/catalog.json target/index.html
             git commit -m "Update documentation"
