@@ -68,7 +68,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Delete old gh-pages branch
-        run: git branch -D gh-pages
+        run: git branch #-D gh-pages
       - name: Create a new gh-pages branch
         run: git checkout -b gh-pages
       - name: Restore manifest file
