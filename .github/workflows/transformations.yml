@@ -55,7 +55,7 @@ jobs:
           key: index
   documentation-update:
     name: Update Documentation
-    needs: cache-artefacts
+    needs: production-run
     runs-on: ubuntu-latest
     steps:
       - name: Checkout documentation branch
