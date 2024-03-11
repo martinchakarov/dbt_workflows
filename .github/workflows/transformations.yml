@@ -30,24 +30,14 @@ jobs:
         run: pipenv run dbt build --target prod
       - name: Generate documentation
         run: pipenv run dbt docs generate --target prod
-  clear-cache:
-    name: Clear cache
-    runs-on: ubuntu-latest
-    needs: production-run
-    steps:
-      - uses: actions/checkout@v4
       - name: Clear manifest cache
+        if: ${{ success() }}
         run: | 
           gh cache delete manifest
           gh cache delete catalog
           gh cache delete index
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
-  cache-artefacts:
-    name: Cache artefacts
-    runs-on: ubuntu-latest
-    needs: clear-cache
-    steps:
       - name: Cache manifest file
         uses: actions/cache/save@v3
         with:
