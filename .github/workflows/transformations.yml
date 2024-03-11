@@ -32,10 +32,11 @@ jobs:
         run: pipenv run dbt docs generate --target prod
       - name: Clear manifest cache
         if: ${{ success() }}
-        run: | 
-          gh cache delete manifest
-          gh cache delete catalog
-          gh cache delete index
+        run: |
+          for key in manifest catalog index; do
+            echo "Deleting cache for key: $key"
+            gh cache delete --repo "$GITHUB_REPOSITORY" "$key" || true
+          done
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
       - name: Cache manifest file
