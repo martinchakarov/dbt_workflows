@@ -22,3 +22,5 @@ models:
   dbt_test:
     staging:
       +materialized: view
+    marts:
+      +materialized: table
