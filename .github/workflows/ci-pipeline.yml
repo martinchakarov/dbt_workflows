@@ -36,5 +36,6 @@ jobs:
       - name: Run and test models
         run: pipenv run dbt build --select "state:modified+" --defer --state . --target ci
       - name: Drop CI schema
+        if: ${{ success() }}
         run: | 
           pipenv run dbt run-operation post_ci_cleanup --args "{dry_run: false}" --target ci
