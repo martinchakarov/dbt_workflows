@@ -30,7 +30,7 @@ jobs:
         run: pipenv run dbt build --target prod
       - name: Generate documentation
         run: pipenv run dbt docs generate --target prod
-      - name: Clear manifest cache
+      - name: Clear cache
         if: ${{ success() }}
         run: |
           for key in manifest catalog index; do
