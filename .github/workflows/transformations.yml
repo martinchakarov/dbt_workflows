@@ -13,7 +13,6 @@ env:
 jobs:
   production-run:
     name: Production Run
-    needs: clear-cache
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
