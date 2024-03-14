@@ -67,7 +67,7 @@ jobs:
                       "type": "header",
                       "text": {
                         "type": "plain_text",
-                        "text": "${{ github.workflow }} job has failed."
+                        "text": "${{ github.workflow }} job has failed"
                       }
                     },
                     {
