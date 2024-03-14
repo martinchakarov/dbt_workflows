@@ -74,7 +74,7 @@ jobs:
                       "type": "section",
                       "text": {
                           "type": "mrkdwn",
-                          "text": "[Click here](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) to see more details on GitHub."
+                          "text": "<http://(${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})|Click here> to see more details on GitHub."
                       }
                     }
                   ]
