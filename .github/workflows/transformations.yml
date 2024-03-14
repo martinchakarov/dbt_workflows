@@ -62,23 +62,23 @@ jobs:
             --header 'Content-type: application/json' \
             --data \
               '{
-            "blocks": [
-              {
-                "type": "header",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "${{ github.workflow }} job has failed"
-                }
-              },
-              {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": "<http://${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here> to see more details on GitHub."
-                }
-              }
-            ]
-          }'
+                  "blocks": [
+                    {
+                      "type": "header",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "${{ github.workflow }} job has failed"
+                      }
+                    },
+                    {
+                      "type": "section",
+                      "text": {
+                          "type": "mrkdwn",
+                          "text": "<http://${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here> to see more details on GitHub."
+                      }
+                    }
+                  ]
+              }'
   documentation-update:
     name: Update Documentation
     needs: production-run
