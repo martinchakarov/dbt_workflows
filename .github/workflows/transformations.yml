@@ -55,30 +55,30 @@ jobs:
           path: target/index.html
           key: index
       - name: Send Slack notification
-            if: ${{ failure() }}
-            run: |
-              curl ${{ secrets.SLACK_DBT_NOTIFICATION_WEBHOOK_URL }} \
-                --request POST \
-                --header 'Content-type: application/json' \
-                --data \
-                  '{
-                      "blocks": [
-                        {
-                          "type": "header",
-                          "text": {
-                            "type": "plain_text",
-                            "text": "${{ github.workflow }} completed"
-                          }
-                        },
-                        {
-                          "type": "section",
-                          "text": {
-                              "type": "mrkdwn",
-                              "text": "${{ github.workflow }} has failed."
-                          }
+          if: ${{ failure() }}
+          run: |
+            curl ${{ secrets.SLACK_DBT_NOTIFICATION_WEBHOOK_URL }} \
+              --request POST \
+              --header 'Content-type: application/json' \
+              --data \
+                '{
+                    "blocks": [
+                      {
+                        "type": "header",
+                        "text": {
+                          "type": "plain_text",
+                          "text": "${{ github.workflow }} completed"
                         }
-                      ]
-                  }'
+                      },
+                      {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": "${{ github.workflow }} has failed."
+                        }
+                      }
+                    ]
+                }'
   documentation-update:
     name: Update Documentation
     needs: production-run
