@@ -57,6 +57,9 @@ jobs:
       - name: Send Slack notification
         if: ${{ failure() }}
         run: |
+          logs_url="https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/logs"
+          error_message=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "$logs_url" | grep -oP '(?<="title":")[^"]+(?=","summary")')
+
           curl ${{ secrets.SLACK_DBT_NOTIFICATION_WEBHOOK_URL }} \
             --request POST \
             --header 'Content-type: application/json' \
@@ -74,7 +77,7 @@ jobs:
                       "type": "section",
                       "text": {
                           "type": "mrkdwn",
-                          "text": "${{ github.workflow }} has failed."
+                          "text": "${{ github.workflow }} has failed. Error message: \n\n```$error_message```"
                       }
                     }
                   ]
