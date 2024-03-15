@@ -12,6 +12,8 @@ env:
 
 jobs:
   production-run:
+    outputs:
+      output1: ${{ steps.dbt-run.outputs.error }}
     name: Production Run
     runs-on: ubuntu-latest
     steps:
@@ -27,7 +29,8 @@ jobs:
       - name: Install dbt dependencies
         run: pipenv run dbt deps --target prod
       - name: Run and test models
-        run: pipenv run dbt build --target prod
+        id: dbt-run
+        run: pipenv run dbt build --target prod 2>> "$GITHUB_OUTPUT"
       - name: Generate documentation
         run: pipenv run dbt docs generate --target prod
       - name: Clear cache
@@ -74,7 +77,7 @@ jobs:
                       "type": "section",
                       "text": {
                           "type": "mrkdwn",
-                          "text": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here> to see more details on GitHub."
+                          "text": "${{ needs.production-run.outputs.error }} \n \n <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here> to see more details on GitHub."
                       }
                     }
                   ]
