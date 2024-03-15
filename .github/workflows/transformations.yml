@@ -12,8 +12,6 @@ env:
 
 jobs:
   production-run:
-    outputs:
-      output1: ${{ steps.dbt-run.outputs.error }}
     name: Production Run
     runs-on: ubuntu-latest
     steps:
@@ -26,12 +24,12 @@ jobs:
         run: |
           curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
           pipenv install
-      - name: Run, test and document dbt models
-        id: dbt
-        run: |
-          echo "pipenv-run-dbt-deps--target-prod=$(pipenv run dbt deps --target prod)\n" >> $GITHUB_OUTPUT
-          echo "pipenv-run-dbt-build--target-prod=$(pipenv run dbt build --target prod)\n" >> $GITHUB_OUTPUT
-          echo "pipenv-run-dbt-docs-generate--target-prod=$(pipenv run dbt docs generate --target prod)\n" >> $GITHUB_OUTPUT
+      - name: Install dbt dependencies
+        run: pipenv run dbt deps --target prod
+      - name: Run and test models
+        run: pipenv run dbt build --target prod
+      - name: Generate documentation
+        run: pipenv run dbt docs generate --target prod
       - name: Clear cache
         if: ${{ success() }}
         run: |
@@ -76,7 +74,7 @@ jobs:
                       "type": "section",
                       "text": {
                           "type": "mrkdwn",
-                          "text": "${{ join(steps.dbt.outputs.*, '\n') }} \n \n <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here> to see more details on GitHub."
+                          "text": "<http://${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here> to see more details on GitHub."
                       }
                     }
                   ]
