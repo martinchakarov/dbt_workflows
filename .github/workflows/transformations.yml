@@ -26,13 +26,12 @@ jobs:
         run: |
           curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
           pipenv install
-      - name: Install dbt dependencies
-        run: pipenv run dbt deps --target prod
-      - name: Run and test models
-        id: dbt-run
-        run: pipenv run dbt build --target prod 2>> "$GITHUB_OUTPUT"
-      - name: Generate documentation
-        run: pipenv run dbt docs generate --target prod
+      - name: Run, test and document dbt models
+        id: dbt
+        run: |
+          echo "pipenv-run-dbt-deps--target-prod=$(pipenv run dbt deps --target prod)\n" >> $GITHUB_OUTPUT
+          echo "pipenv-run-dbt-build--target-prod=$(pipenv run dbt build --target prod)\n" >> $GITHUB_OUTPUT
+          echo "pipenv-run-dbt-docs-generate--target-prod=$(pipenv run dbt docs generate --target prod)\n" >> $GITHUB_OUTPUT
       - name: Clear cache
         if: ${{ success() }}
         run: |
@@ -77,7 +76,7 @@ jobs:
                       "type": "section",
                       "text": {
                           "type": "mrkdwn",
-                          "text": "${{ needs.production-run.outputs.error }} \n \n <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here> to see more details on GitHub."
+                          "text": "${{ join(steps.dbt.outputs.*, '\n') }} \n \n <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here> to see more details on GitHub."
                       }
                     }
                   ]
