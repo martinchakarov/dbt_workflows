@@ -61,7 +61,7 @@ jobs:
       - name: Send Slack notification
         if: ${{ failure() }}
         run: |
-          $LOGS=${{steps.dbt-output.outputs.dbt_logs}} | base64 -d
+          logs=$(echo "${{steps.dbt-output.outputs.dbt_logs}}" | awk -F '=' '{print $2}' | base64 -d)
           curl ${{ secrets.SLACK_DBT_NOTIFICATION_WEBHOOK_URL }} \
             --request POST \
             --header 'Content-type: application/json' \
@@ -79,7 +79,7 @@ jobs:
                       "type": "section",
                       "text": {
                           "type": "mrkdwn",
-                          "text": "$LOGS\n\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here> to see more details on GitHub."
+                          "text": "'"$logs"'\n\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here> to see more details on GitHub."
                       }
                     }
                   ]
