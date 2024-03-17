@@ -27,11 +27,7 @@ jobs:
       - name: Install dbt dependencies
         run: pipenv run dbt deps --target prod
       - name: Run and test models
-        run: pipenv run dbt build --target prod >> logs.log
-      - name: Set output parameter
-        if: ${{ failure() }}
-        id: dbt-output
-        run: echo "dbt_logs=$(cat logs.log | base64 -w 0)" >> $GITHUB_OUTPUT
+        run: pipenv run dbt build --target prod
       - name: Generate documentation
         run: pipenv run dbt docs generate --target prod
       - name: Clear cache
@@ -61,7 +57,6 @@ jobs:
       - name: Send Slack notification
         if: ${{ failure() }}
         run: |
-          logs=$(echo "${{steps.dbt-output.outputs.dbt_logs}}" | awk -F '=' '{print $2}' | base64 -d)
           curl ${{ secrets.SLACK_DBT_NOTIFICATION_WEBHOOK_URL }} \
             --request POST \
             --header 'Content-type: application/json' \
@@ -79,7 +74,7 @@ jobs:
                       "type": "section",
                       "text": {
                           "type": "mrkdwn",
-                          "text": "'"$logs"'\n\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here> to see more details on GitHub."
+                          "text": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here> to see more details on GitHub."
                       }
                     }
                   ]
