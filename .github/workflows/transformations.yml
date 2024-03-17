@@ -33,7 +33,7 @@ jobs:
         id: dbt-output
         run: |
           LOGS=$(cat logs.log)
-          echo "::set-output name=dbt_logs::$LOGS"
+          echo "dbt_logs=$OUTPUT_VALUE" >> $GITHUB_OUTPUT
       - name: Generate documentation
         run: pipenv run dbt docs generate --target prod
       - name: Clear cache
