@@ -27,7 +27,13 @@ jobs:
       - name: Install dbt dependencies
         run: pipenv run dbt deps --target prod
       - name: Run and test models
-        run: pipenv run dbt build --target prod
+        run: pipenv run dbt build --target prod >> logs.log
+      - name: Set output parameter
+        if: ${{ failure() }}
+        id: dbt-output
+        run: |
+          LOGS=$(cat logs.log)
+          echo "::set-output name=dbt_logs::$LOGS"
       - name: Generate documentation
         run: pipenv run dbt docs generate --target prod
       - name: Clear cache
@@ -74,7 +80,7 @@ jobs:
                       "type": "section",
                       "text": {
                           "type": "mrkdwn",
-                          "text": "<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here> to see more details on GitHub."
+                          "text": "${{steps.dbt-output.outputs.dbt_logs}}\n\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Click here> to see more details on GitHub."
                       }
                     }
                   ]
