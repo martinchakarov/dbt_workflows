@@ -1,14 +1,1 @@
-WITH SOURCE AS (
-      SELECT * FROM {{ source('raw', 'order_items') }}
-),
-
-RENAMED AS (
-    SELECT
-        ORDER_ID::INT AS ORDER_ID, 
-        PRODUCT_ID::INT AS PRODUCT_ID, 
-        QUANTITY::INT AS QUANTITY
-    FROM SOURCE
-)
-
-SELECT * FROM RENAMED
-  
+{{ stg_order_items() }}

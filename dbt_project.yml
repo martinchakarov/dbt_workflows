@@ -24,3 +24,10 @@ models:
       +materialized: view
     marts:
       +materialized: table
+
+vars:
+  regions: {
+    'Australia': 'au',
+    'Europe': 'eu',
+    'North America': 'na'
+  }

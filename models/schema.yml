@@ -1,7 +1,7 @@
 sources:
-  - name: raw
-    database: dbt_database
-    schema: raw_data
+  - name: raw_eu
+    database: raw_data
+    schema: raw_eu # Europe
     tables:
       - name: customers
         columns:
@@ -11,6 +11,65 @@ sources:
           - name: gender
           - name: email
           - name: ip_address
+          - name: region
+      - name: orders
+        columns:
+          - name: id
+          - name: date
+          - name: customer_id
+      - name: order_items
+        columns:
+          - name: order_id
+          - name: product_id
+          - name: quantity
+      - name: products
+        columns:
+          - name: id
+          - name: name
+          - name: price
+          - name: on_sale
+  - name: raw_au
+    database: raw_data
+    schema: raw_au # Australia
+    tables:
+      - name: customers
+        columns:
+          - name: id
+          - name: first_name
+          - name: last_name
+          - name: gender
+          - name: email
+          - name: ip_address
+          - name: region
+      - name: orders
+        columns:
+          - name: id
+          - name: date
+          - name: customer_id
+      - name: order_items
+        columns:
+          - name: order_id
+          - name: product_id
+          - name: quantity
+      - name: products
+        columns:
+          - name: id
+          - name: name
+          - name: price
+          - name: on_sale
+  - name: raw_na
+    database: raw_data
+    schema: raw_na # North America
+    tables:
+      - name: customers
+        columns:
+          - name: id
+          - name: first_name
+          - name: last_name
+          - name: gender
+          - name: email
+          - name: ip_address
+          - name: region
       - name: orders
         columns:
           - name: id
