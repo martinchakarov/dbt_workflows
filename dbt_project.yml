@@ -1,8 +1,8 @@
-name: 'dbt_test'
+name: 'dbt_workflows'
 version: '1.0.0'
 config-version: 2
 
-profile: 'dbt_test'
+profile: 'dbt_workflows'
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
@@ -19,7 +19,7 @@ seeds:
   +schema: seed_data
 
 models:
-  dbt_test:
+  dbt_workflows:
     staging:
       +materialized: view
     marts:

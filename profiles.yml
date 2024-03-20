@@ -1,4 +1,4 @@
-dbt_test:
+dbt_workflows:
   outputs:
     dev:
       account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
