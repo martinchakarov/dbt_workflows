@@ -27,7 +27,11 @@ jobs:
           pipenv install
       - name: Install dbt dependencies
         run: pipenv run dbt deps --target prod
+      - name: Check ingestion warehouse status
+        run: | 
+          pipenv run dbt run-operation check_ingestion_warehouse_status --target prod
       - name: Run and test models
+        if: ${{ success() }}
         run: pipenv run dbt build --target prod
       - name: Generate documentation
         run: pipenv run dbt docs generate --target prod
