@@ -31,3 +31,6 @@ vars:
     'Europe': 'eu',
     'North America': 'na'
   }
+  check_ingestion_status: True
+  check_ingestion_timestamp: False
+  max_data_age_in_minutes: 120
