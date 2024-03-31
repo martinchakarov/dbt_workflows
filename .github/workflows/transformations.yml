@@ -35,7 +35,7 @@ jobs:
       - name: Test source freshness
         if: ${{ success() }}
         run: | 
-          dbt source freshness
+          pipenv run dbt source freshness
       - name: Run and test models
         if: ${{ success() }}
         run: pipenv run dbt build --target prod
