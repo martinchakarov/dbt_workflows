@@ -1,0 +1,1001 @@
+id,name,price,on_sale
+1,Iced Tea Concentrate,24.01,false
+2,Pear - Halves,11.64,true
+3,Apple - Granny Smith,2.02,true
+4,"Lobster - Baby, Boiled",10.29,false
+5,Bouillion - Fish,2.43,true
+6,Gelatine Powder,8.54,false
+7,Spice - Pepper Portions,21.17,true
+8,Juice - Lagoon Mango,29.28,false
+9,Gherkin,25.08,true
+10,Marjoram - Fresh,2.63,true
+11,Wine - Duboeuf Beaujolais,10.99,false
+12,Devonshire Cream,1.2,true
+13,Kellogs Cereal In A Cup,27.58,false
+14,Island Oasis - Wildberry,27.28,true
+15,Pie Filling - Cherry,20.08,false
+16,Wine - Crozes Hermitage E.,16.34,true
+17,"Potatoes - Instant, Mashed",7.83,true
+18,"Apple - Delicious, Golden",16.43,true
+19,"Wine - Red, Colio Cabernet",26.57,false
+20,Shallots,23.23,true
+21,Beer - Fruli,20.93,false
+22,Cheese - Parmesan Grated,15.9,true
+23,Bar Mix - Lime,16.57,false
+24,Compound - Rum,19.78,true
+25,Myers Planters Punch,5.28,false
+26,Cheese Cheddar Processed,18.36,true
+27,Soup Campbells Mexicali Tortilla,17.69,true
+28,Olive - Spread Tapenade,29.49,false
+29,Lid Coffeecup 12oz D9542b,22.76,false
+30,"Lid - High Heat, Super Clear",19.2,false
+31,"Wine - Red, Colio Cabernet",22.15,true
+32,Port - 74 Brights,27.99,true
+33,"Syrup - Monin, Irish Cream",1.84,true
+34,"Cheese - Brie,danish",18.44,false
+35,Wasabi Paste,17.58,false
+36,Sugar - Invert,13.55,true
+37,"Octopus - Baby, Cleaned",13.22,true
+38,"Dill - Primerba, Paste",27.16,true
+39,"Olives - Green, Pitted",22.1,false
+40,"Wine - Red, Black Opal Shiraz",9.01,true
+41,Veal - Eye Of Round,19.29,false
+42,Orange Roughy 6/8 Oz,10.03,false
+43,Beer - Blue,5.63,true
+44,"Pork - Bacon, Sliced",2.91,false
+45,Steam Pan Full Lid,19.42,false
+46,Juice - Lime,29.42,false
+47,"Clams - Littleneck, Whole",20.26,false
+48,Chocolate Bar - Reese Pieces,21.38,true
+49,Lettuce - Lolla Rosa,2.75,false
+50,Wine - Charddonnay Errazuriz,11.52,false
+51,Tia Maria,27.68,false
+52,Spring Roll Veg Mini,22.01,false
+53,Gatorade - Fruit Punch,4.65,false
+54,Sobe - Lizard Fuel,27.05,true
+55,Aspic - Light,15.4,true
+56,Truffle Cups - Brown,16.83,true
+57,Energy - Boo - Koo,7.47,true
+58,Napkin - Beverage 1 Ply,24.7,true
+59,Boogies,16.3,true
+60,Soup - Campbells Chicken,2.86,true
+61,"Salsify, Organic",12.86,false
+62,Compound - Pear,25.44,true
+63,Calypso - Strawberry Lemonade,7.8,false
+64,"Soup - Knorr, Country Bean",2.02,false
+65,Island Oasis - Strawberry,18.38,false
+66,Cranberries - Frozen,9.24,false
+67,Banana Turning,27.34,true
+68,Maintenance Removal Charge,29.93,false
+69,Bacardi Limon,22.27,true
+70,Ham - Proscuitto,28.37,true
+71,"Beef - Ox Tongue, Pickled",6.36,false
+72,"Lamb - Racks, Frenched",3.91,true
+73,Wine - Barbera Alba Doc 2001,7.68,false
+74,Cheese - Blue,29.01,false
+75,Pork Ham Prager,2.21,true
+76,Sugar - Fine,8.87,true
+77,Beer - Rickards Red,14.97,false
+78,"Chicken - Diced, Cooked",23.12,false
+79,Beef Dry Aged Tenderloin Aaa,21.91,false
+80,Bread - Burger,8.82,false
+81,Lettuce - Belgian Endive,13.43,true
+82,Squash - Acorn,21.76,true
+83,Sobe - Lizard Fuel,19.15,false
+84,Fruit Mix - Light,11.65,true
+85,Pork - Ham Hocks - Smoked,20.15,true
+86,Liqueur - Melon,18.45,false
+87,"Lamb - Leg, Diced",16.85,true
+88,Cheese - Feta,28.63,false
+89,"Shrimp - Baby, Cold Water",23.3,true
+90,Lamb Leg - Bone - In Nz,7.33,true
+91,Muffin Batt - Blueberry Passion,9.39,true
+92,Soup - Campbells Beef Strogonoff,29.21,true
+93,Milk - Chocolate 250 Ml,18.65,true
+94,Wine - Champagne Brut Veuve,15.96,false
+95,Pastry - Cherry Danish - Mini,10.69,true
+96,"Tart Shells - Sweet, 2",17.05,false
+97,"Peas - Pigeon, Dry",21.26,false
+98,Kiwi Gold Zespri,19.08,true
+99,Onions - Cippolini,3.95,false
+100,V8 - Berry Blend,9.8,false
+101,The Pop Shoppe - Lime Rickey,7.21,true
+102,Bread - Hamburger Buns,16.05,false
+103,Flour - Whole Wheat,9.07,false
+104,Cabbage - Nappa,20.87,true
+105,Ice Cream Bar - Oreo Sandwich,29.79,false
+106,Beef - Ground Medium,11.6,false
+107,Wine - Winzer Krems Gruner,2.14,false
+108,Wine - Fat Bastard Merlot,10.12,true
+109,Pastrami,19.1,true
+110,Fenngreek Seed,20.92,false
+111,"Beef - Kindney, Whole",6.82,true
+112,"Rosemary - Primerba, Paste",6.26,true
+113,"Soup - Beef Conomme, Dry",17.52,false
+114,Flour Pastry Super Fine,27.17,false
+115,Sugar - Monocystal / Rock,28.16,true
+116,Wine - Alicanca Vinho Verde,9.4,true
+117,"Bread - Crumbs, Bulk",25.59,false
+118,"Tart Shells - Barquettes, Savory",11.07,false
+119,Fudge - Chocolate Fudge,15.8,false
+120,Garbage Bags - Clear,27.85,true
+121,"Arctic Char - Fresh, Whole",27.34,true
+122,Yoplait Drink,19.32,false
+123,"Marjoram - Dried, Rubbed",3.14,false
+124,"Nut - Walnut, Chopped",5.72,true
+125,Veal - Provimi Inside,9.53,true
+126,Banana - Leaves,17.51,true
+127,Initation Crab Meat,7.21,false
+128,Ice Cream Bar - Rolo Cone,6.02,false
+129,Bread Crumbs - Panko,20.99,false
+130,Venison - Ground,4.23,false
+131,"Orange - Canned, Mandarin",13.75,true
+132,Beef - Kobe Striploin,6.96,false
+133,"Fish - Atlantic Salmon, Cold",12.66,false
+134,"Doilies - 10, Paper",15.4,false
+135,Glass - Juice Clear 5oz 55005,5.12,false
+136,Orange Roughy 4/6 Oz,23.6,false
+137,Bread Base - Italian,6.74,true
+138,Cardamon Seed / Pod,23.88,true
+139,Chicken - Base,11.14,true
+140,Chinese Foods - Pepper Beef,26.83,false
+141,Aromat Spice / Seasoning,8.75,false
+142,Beer - Camerons Cream Ale,3.57,false
+143,"Lettuce - Romaine, Heart",8.47,false
+144,Chicken Giblets,6.89,true
+145,"Oil - Truffle, Black",8.37,false
+146,Muffin - Mix - Strawberry Rhubarb,27.97,false
+147,Wine - Wyndham Estate Bin 777,10.94,true
+148,Creme De Banane - Marie,3.02,true
+149,Sausage - Meat,14.42,true
+150,"Ranchero - Primerba, Paste",4.23,false
+151,Cake - Cheese Cake 9 Inch,12.82,false
+152,Yeast Dry - Fleischman,18.22,true
+153,Muffin - Blueberry Individual,10.04,false
+154,Milkettes - 2%,4.96,true
+155,Juice - Propel Sport,2.07,true
+156,Cheese - Brick With Onion,3.63,false
+157,External Supplier,11.73,false
+158,"Tomatoes - Diced, Canned",19.76,true
+159,Maintenance Removal Charge,17.7,true
+160,Muffin Batt - Choc Chk,17.43,true
+161,Beef - Texas Style Burger,16.58,false
+162,Bread - Olive,18.64,false
+163,Chinese Foods - Thick Noodles,25.79,true
+164,Coffee Cup 16oz Foam,18.58,true
+165,Bagel - Plain,11.22,false
+166,Pork - European Side Bacon,6.29,true
+167,Wine - Redchard Merritt,25.37,true
+168,Clams - Bay,25.07,false
+169,"Beans - Kidney, Canned",10.65,true
+170,Pastry - Apple Muffins - Mini,23.22,false
+171,Veal - Provimi Inside,7.58,true
+172,Rabbit - Frozen,11.37,false
+173,Sauce - Sesame Thai Dressing,1.12,false
+174,Kahlua,1.69,true
+175,"Wine - White, Ej",23.69,false
+176,Table Cloth 53x69 White,18.95,false
+177,Squid Ink,5.6,false
+178,Wine - Pinot Grigio Collavini,5.1,false
+179,Bacardi Breezer - Strawberry,10.29,false
+180,"Cheese - Cheddar, Mild",26.87,false
+181,Wine - Beringer Founders Estate,15.13,false
+182,Syrup - Kahlua Chocolate,19.8,true
+183,Poppy Seed,13.18,false
+184,"Sauce - Black Current, Dry Mix",20.39,true
+185,Munchies Honey Sweet Trail Mix,28.11,false
+186,Swiss Chard,6.54,true
+187,Taro Leaves,14.84,true
+188,Steampan - Half Size Shallow,8.62,true
+189,"Wine - Red, Antinori Santa",15.96,true
+190,Tea - Herbal - 6 Asst,23.62,true
+191,Ice Cream Bar - Drumstick,22.91,false
+192,Bread Roll Foccacia,25.58,true
+193,Iced Tea Concentrate,9.6,true
+194,"Wine - White, Concha Y Toro",26.65,true
+195,Mushroom - Crimini,14.35,false
+196,"Ecolab - Orange Frc, Cleaner",18.78,false
+197,"Beef - Tongue, Cooked",22.69,true
+198,Olives - Nicoise,21.54,true
+199,Bagel - Sesame Seed Presliced,26.94,false
+200,Potatoes - Mini Red,4.84,true
+201,Beer - Maudite,10.51,false
+202,Fondant - Icing,22.15,false
+203,Squid - U 5,8.76,true
+204,Beef - Top Butt,11.48,true
+205,"Wine - White, Chardonnay",2.13,false
+206,Appetizer - Assorted Box,29.32,true
+207,Beef - Shank,3.18,false
+208,Beef - Top Sirloin,13.12,false
+209,"Veal - Inside Round / Top, Lean",15.65,false
+210,Dooleys Toffee,19.62,false
+211,Cookies - Englishbay Oatmeal,19.28,false
+212,Potatoes - Idaho 100 Count,10.66,false
+213,"Salmon - Smoked, Sliced",4.74,true
+214,"Pasta - Tortellini, Fresh",1.34,false
+215,Raisin - Dark,24.74,false
+216,Blackberries,13.83,true
+217,Mix - Cappucino Cocktail,26.64,true
+218,Brandy Cherry - Mcguinness,11.0,true
+219,"Wine - Red, Colio Cabernet",21.39,false
+220,"Juice - V8, Tomato",6.33,false
+221,"Cheese - Havarti, Roasted Garlic",8.59,false
+222,Mini - Vol Au Vents,1.17,true
+223,Longos - Grilled Veg Sandwiches,18.96,false
+224,Gatorade - Orange,2.61,true
+225,Wine - Ruffino Chianti,3.16,false
+226,Five Alive Citrus,26.85,true
+227,Olives - Stuffed,25.88,false
+228,"Pork - Bacon, Sliced",11.87,true
+229,Eggroll,29.79,false
+230,Celery Root,1.57,false
+231,Sauce - Fish 25 Ozf Bottle,14.42,true
+232,"Oil - Shortening,liqud, Fry",5.52,false
+233,Knife Plastic - White,27.37,true
+234,"Doilies - 7, Paper",18.92,false
+235,Rabbit - Whole,20.47,false
+236,"Placemat - Scallop, White",26.46,false
+237,"Pasta - Cannelloni, Sheets, Fresh",24.35,false
+238,Wine - Zinfandel California 2002,11.71,false
+239,Tea Leaves - Oolong,14.04,false
+240,Grenadillo,10.03,true
+241,Horseradish Root,1.01,false
+242,Carbonated Water - Lemon Lime,3.73,false
+243,Liquid Aminios Acid - Braggs,1.67,false
+244,"Wine - Red, Metus Rose",21.82,true
+245,Island Oasis - Raspberry,23.64,false
+246,Cookies Oatmeal Raisin,28.08,true
+247,Icecream - Dstk Cml And Fdg,9.29,false
+248,Veal - Inside,18.44,true
+249,Gooseberry,6.78,true
+250,Wine - Charddonnay Errazuriz,20.79,true
+251,Appetizer - Asian Shrimp Roll,4.78,false
+252,Lettuce - Sea / Sea Asparagus,16.73,true
+253,"Tray - Foam, Square 4 - S",29.6,false
+254,Puree - Mango,29.09,true
+255,"Wine - White, Riesling, Semi - Dry",22.6,false
+256,Swiss Chard,4.25,false
+257,Blackberries,9.39,true
+258,"Wine - Red, Harrow Estates, Cab",6.8,true
+259,Trout - Smoked,25.71,false
+260,Gooseberry,16.14,true
+261,Beer - Paulaner Hefeweisse,28.51,true
+262,Glove - Cutting,29.62,false
+263,Pumpkin - Seed,4.47,true
+264,Apple - Northern Spy,10.59,false
+265,"Pepsi, 355 Ml",5.9,true
+266,Fennel,14.39,false
+267,Bagelers - Cinn / Brown Sugar,1.37,false
+268,Huck White Towels,3.44,false
+269,Cabbage - Green,20.52,false
+270,"Wine - Red, Cooking",9.18,false
+271,Pork Loin Cutlets,22.58,false
+272,"Onions - Dried, Chopped",25.74,false
+273,Tequila - Sauza Silver,10.59,false
+274,Rice Paper,4.47,false
+275,Pastry - Cherry Danish - Mini,20.34,false
+276,Nori Sea Weed - Gold Label,22.68,true
+277,Pepperoni Slices,2.52,true
+278,Wine - Crozes Hermitage E.,24.73,false
+279,Water - Spring Water 500ml,28.3,true
+280,Saskatoon Berries - Frozen,18.25,true
+281,Cheese - Swiss Sliced,15.12,true
+282,Tandoori Curry Paste,19.14,false
+283,Catfish - Fillets,13.26,false
+284,Melon - Watermelon Yellow,15.54,false
+285,Table Cloth 72x144 White,29.82,true
+286,Broom - Corn,26.48,true
+287,Beer - Blue Light,7.65,false
+288,Chicken - White Meat With Tender,16.81,true
+289,"Beef - Ox Tail, Frozen",10.44,true
+290,Cranberries - Fresh,13.0,false
+291,"Radish - Black, Winter, Organic",7.76,false
+292,Wine - Redchard Merritt,18.89,true
+293,"Lemonade - Island Tea, 591 Ml",24.42,false
+294,Huck White Towels,18.91,false
+295,Gingerale - Diet - Schweppes,20.11,false
+296,Veal Inside - Provimi,9.36,false
+297,Juice - Lemon,6.08,false
+298,Wine - Barbera Alba Doc 2001,9.95,true
+299,Bread - Raisin Walnut Oval,7.81,false
+300,"Soup - Beef Conomme, Dry",15.97,false
+301,Skirt - 24 Foot,18.62,false
+302,Bread Base - Italian,5.55,false
+303,"Veal - Leg, Provimi - 50 Lb Max",22.41,true
+304,Pie Shells 10,23.38,true
+305,Wine - George Duboeuf Rose,9.28,true
+306,Wine - Fino Tio Pepe Gonzalez,8.71,true
+307,Puff Pastry - Slab,4.47,true
+308,"Cake Circle, Paprus",25.17,false
+309,Bagel - Sesame Seed Presliced,5.42,false
+310,Bread Bowl Plain,26.35,false
+311,"Chicken - Wings, Tip Off",20.11,true
+312,Beef - Montreal Smoked Brisket,13.29,true
+313,"Roe - Lump Fish, Red",14.14,true
+314,Wine - Delicato Merlot,17.19,true
+315,Chocolate - Sugar Free Semi Choc,13.13,true
+316,Canada Dry,25.98,true
+317,Wine - Tribal Sauvignon,12.02,false
+318,Soup Campbells,18.03,true
+319,"Cheese - Havarti, Roasted Garlic",25.28,false
+320,Onion Powder,17.34,true
+321,Truffle Paste,23.99,true
+322,Orange Roughy 6/8 Oz,22.86,true
+323,Soup Campbells - Italian Wedding,16.58,false
+324,Wine - Vineland Estate Semi - Dry,2.38,false
+325,Limes,11.16,true
+326,Wine - Rosso Toscano Igt,22.47,true
+327,Coffee - Frthy Coffee Crisp,23.86,false
+328,"Wine - Red, Black Opal Shiraz",19.73,true
+329,Cinnamon - Ground,27.05,false
+330,Milk - Chocolate 250 Ml,13.98,true
+331,"Tarragon - Primerba, Paste",26.47,false
+332,Soup Campbells Split Pea And Ham,16.26,false
+333,Cod - Fillets,3.89,false
+334,Soup Campbells - Tomato Bisque,5.46,false
+335,"Lettuce - Mini Greens, Whole",15.95,true
+336,Extract - Almond,6.99,true
+337,Basil - Fresh,22.22,true
+338,Cookie - Dough Variety,17.2,false
+339,Rabbit - Frozen,19.44,false
+340,Noodles - Steamed Chow Mein,13.32,true
+341,Wine - Masi Valpolocell,14.23,true
+342,"Shrimp - Baby, Warm Water",17.64,false
+343,Beer - Muskoka Cream Ale,26.31,false
+344,Nut - Pumpkin Seeds,3.84,true
+345,Soap - Pine Sol Floor Cleaner,27.36,true
+346,Cucumber - English,2.74,false
+347,Barramundi,1.24,false
+348,Bread - Pain Au Liat X12,7.42,false
+349,Table Cloth 90x90 Colour,19.29,true
+350,Flavouring - Rum,28.75,true
+351,Apples - Sliced / Wedge,10.23,false
+352,Figs,15.28,false
+353,"Rum - Light, Captain Morgan",2.06,false
+354,Yoghurt Tubes,17.72,false
+355,Parsnip,21.72,false
+356,Straws - Cocktale,12.21,false
+357,Cotton Wet Mop 16 Oz,27.6,true
+358,Muffin - Mix - Mango Sour Cherry,3.85,false
+359,Onions - Red Pearl,5.98,false
+360,Syrup - Monin - Granny Smith,23.65,false
+361,Onions - Vidalia,22.35,true
+362,Lettuce - Lolla Rosa,14.21,true
+363,Muffin Puck Ww Carrot,26.19,true
+364,Saskatoon Berries - Frozen,16.12,true
+365,Flavouring - Orange,15.33,false
+366,Compound - Rum,20.56,false
+367,Shrimp - 31/40,15.41,false
+368,Lettuce - Lambs Mash,29.68,false
+369,"Artichoke - Hearts, Canned",27.72,false
+370,"Asparagus - Green, Fresh",3.57,true
+371,Muffin - Banana Nut Individual,13.96,false
+372,Cheese - Goat With Herbs,21.0,true
+373,Tomatoes,18.33,true
+374,Corn Shoots,24.67,true
+375,Milk - 2%,12.17,false
+376,Herb Du Provence - Primerba,22.57,true
+377,Bagelers - Cinn / Brown,28.45,false
+378,"Soup - Campbells, Chix Gumbo",20.8,false
+379,Curry Paste - Green Masala,24.45,true
+380,Garam Masala Powder,17.1,true
+381,"Beer - Alexander Kieths, Pale Ale",13.43,true
+382,"Bread - Bagels, Mini",26.61,true
+383,Glass Clear 8 Oz,17.25,false
+384,Easy Off Oven Cleaner,19.94,true
+385,Extract Vanilla Pure,7.97,false
+386,Potatoes - Idaho 80 Count,4.27,false
+387,Buttons,10.97,true
+388,Longan,10.06,false
+389,Muffin Hinge 117n,23.06,true
+390,"Wine - Sherry Dry Sack, William",6.54,false
+391,"Pasta - Penne Primavera, Single",24.5,true
+392,"Shrimp - 16/20, Peeled Deviened",20.86,false
+393,Ice Cream Bar - Oreo Cone,16.3,false
+394,Chevere Logs,8.74,false
+395,Potatoes - Pei 10 Oz,19.65,true
+396,Cheese - La Sauvagine,22.73,false
+397,"Juice - Clamato, 341 Ml",6.4,false
+398,Sauce - Marinara,8.33,false
+399,Ginger - Fresh,9.79,true
+400,Puree - Blackcurrant,20.31,false
+401,Nescafe - Frothy French Vanilla,6.26,false
+402,Oats Large Flake,11.94,true
+403,Wine - Taylors Reserve,21.38,true
+404,Papadam,18.84,false
+405,Parsley Italian - Fresh,16.6,false
+406,Lobster - Tail 6 Oz,6.37,false
+407,Spice - Onion Powder Granulated,16.24,true
+408,"Rum - Light, Captain Morgan",9.06,false
+409,V8 - Berry Blend,2.56,true
+410,Bread - Rye,26.1,false
+411,Nori Sea Weed,24.94,false
+412,Wine - Champagne Brut Veuve,13.96,false
+413,Sunflower Seed Raw,29.93,false
+414,"Asparagus - White, Fresh",21.78,true
+415,Bread - Corn Muffaletta,8.03,false
+416,Salmon Steak - Cohoe 8 Oz,26.65,false
+417,"Sugar - Brown, Individual",1.75,false
+418,Veal - Kidney,10.17,true
+419,Wine - Spumante Bambino White,28.26,false
+420,Oven Mitts - 15 Inch,14.38,true
+421,Latex Rubber Gloves Size 9,19.56,true
+422,White Fish - Filets,19.56,false
+423,"Doilies - 5, Paper",4.48,true
+424,Parasol Pick Stir Stick,27.56,false
+425,Almonds Ground Blanched,17.31,false
+426,Rice - Long Grain,24.17,false
+427,"Pepper - Paprika, Hungarian",23.46,true
+428,Flower - Commercial Bronze,11.64,true
+429,Broom And Brush Rack Black,29.1,false
+430,Lobster - Base,24.75,false
+431,Sugar - Icing,16.72,false
+432,Chicken - Whole Fryers,5.7,false
+433,"Rum - White, Gg White",18.38,true
+434,Table Cloth 54x72 Colour,28.13,true
+435,Rice - Aborio,22.24,true
+436,Chicken - Whole Fryers,1.94,false
+437,Bay Leaf Fresh,13.62,false
+438,Trout - Smoked,1.49,false
+439,External Supplier,6.49,true
+440,Hagen Daza - Dk Choocolate,1.71,false
+441,Lettuce - Baby Salad Greens,21.23,true
+442,Magnotta - Bel Paese White,21.15,false
+443,Wine - Prosecco Valdobiaddene,24.71,false
+444,White Fish - Filets,2.58,false
+445,Sesame Seed,10.81,false
+446,Shichimi Togarashi Peppeers,20.07,false
+447,"Beans - Navy, Dry",19.46,true
+448,Bay Leaf Fresh,27.83,false
+449,Wild Boar - Tenderloin,16.93,true
+450,Cabbage - Green,16.23,true
+451,Turkey Tenderloin Frozen,26.16,true
+452,Flower - Dish Garden,6.65,true
+453,Nacho Chips,1.77,false
+454,"Nut - Pistachio, Shelled",20.61,true
+455,Plastic Arrow Stir Stick,16.29,false
+456,Chicken Thigh - Bone Out,9.75,false
+457,Appetizer - Asian Shrimp Roll,8.63,false
+458,"Turnip - White, Organic",22.76,false
+459,"Tortillas - Flour, 10",29.93,true
+460,"Brandy - Orange, Mc Guiness",13.27,true
+461,Anchovy Paste - 56 G Tube,26.54,false
+462,Coffee - Frthy Coffee Crisp,27.61,true
+463,"Pasta - Canelloni, Single Serve",29.62,false
+464,Pur Source,28.89,false
+465,Bread Crumbs - Panko,1.57,false
+466,Oven Mitts 17 Inch,1.05,false
+467,Macaroons - Two Bite Choc,1.03,true
+468,Turkey Tenderloin Frozen,4.22,false
+469,Celery Root,27.44,true
+470,Juice Peach Nectar,8.8,false
+471,"Bread - White, Sliced",1.66,true
+472,"Beef - Chuck, Boneless",7.91,true
+473,Tomatoes - Heirloom,25.68,false
+474,Tea - Decaf Lipton,15.33,false
+475,Potatoes - Mini White 3 Oz,16.96,true
+476,Nougat - Paste / Cream,5.01,false
+477,"Quail - Eggs, Fresh",1.51,false
+478,Container - Foam Dixie 12 Oz,6.27,false
+479,Rambutan,13.68,false
+480,Papadam,20.52,true
+481,Bread Cranberry Foccacia,25.46,false
+482,Beets,9.45,true
+483,Beef - Striploin Aa,27.08,true
+484,Lidsoupcont Rp12dn,5.16,true
+485,"Beef - Tongue, Fresh",10.93,true
+486,Olives - Nicoise,14.42,false
+487,Chicken - Whole,16.11,false
+488,Paper Towel Touchless,2.93,false
+489,"Lamb - Racks, Frenched",6.45,true
+490,Soup - Campbells Tomato Ravioli,11.44,true
+491,"Veal - Brisket, Provimi, Bone - In",19.16,false
+492,Cheese - Ricotta,2.25,true
+493,Lamb - Loin Chops,23.36,false
+494,Pepper - Cubanelle,10.29,true
+495,"Beef - Rouladin, Sliced",10.57,false
+496,Rum - Mount Gay Eclipes,15.77,true
+497,Cumin - Whole,21.25,false
+498,Pate - Liver,28.27,true
+499,Bar Special K,22.18,true
+500,Gooseberry,14.55,false
+501,Cheese - Goat With Herbs,10.69,true
+502,Lettuce - Green Leaf,24.74,true
+503,Plasticknivesblack,12.75,false
+504,Cheese - Cheddar With Claret,14.33,true
+505,"Chocolate - Milk, Callets",16.43,false
+506,Lettuce - Boston Bib,29.5,false
+507,"Mushroom - Enoki, Dry",25.45,true
+508,Juice - Apple 284ml,5.82,true
+509,Pate Pans Yellow,28.18,true
+510,Wine - Sicilia Igt Nero Avola,22.3,false
+511,Chicken - Ground,18.7,true
+512,Beer - Pilsner Urquell,16.83,true
+513,Soup - Cream Of Potato / Leek,16.9,false
+514,Flower - Commercial Spider,4.42,false
+515,Oven Mitt - 13 Inch,4.92,true
+516,V8 - Tropical Blend,14.48,true
+517,Chips - Potato Jalapeno,18.74,false
+518,Muffin - Banana Nut Individual,7.12,false
+519,Sorrel - Fresh,12.73,false
+520,"Coke - Classic, 355 Ml",5.37,true
+521,Wine - Barolo Fontanafredda,24.63,true
+522,Wine - Vineland Estate Semi - Dry,9.99,false
+523,Salt - Table,26.37,true
+524,Oven Mitts 17 Inch,7.38,true
+525,Salmon Steak - Cohoe 6 Oz,18.39,true
+526,Sour Puss Raspberry,20.4,true
+527,"Tray - Foam, Square 4 - S",13.73,false
+528,Coriander - Ground,13.94,true
+529,Potatoes - Fingerling 4 Oz,3.12,false
+530,Pie Filling - Cherry,7.07,false
+531,Seabream Whole Farmed,19.88,true
+532,Sauce - Salsa,14.56,true
+533,"Seedlings - Buckwheat, Organic",17.13,true
+534,Foil Wrap,21.61,true
+535,Table Cloth 81x81 Colour,18.45,true
+536,Cleaner - Bleach,21.15,false
+537,Puree - Kiwi,5.65,false
+538,Fruit Mix - Light,26.32,true
+539,Kippers - Smoked,26.95,true
+540,"Red Snapper - Fillet, Skin On",18.42,false
+541,Beans - Wax,16.39,false
+542,Olives - Morracan Dired,2.36,true
+543,Beef - Salted,14.35,false
+544,Asparagus - Mexican,11.56,false
+545,Beef - Tenderloin,15.67,true
+546,"Lemonade - Natural, 591 Ml",28.48,true
+547,Chutney Sauce - Mango,25.04,true
+548,Dried Peach,17.82,false
+549,Vector Energy Bar,12.88,true
+550,Bread Ww Cluster,17.08,false
+551,Vinegar - Champagne,29.34,false
+552,"Soup - Cream Of Broccoli, Dry",26.23,true
+553,Fruit Salad Deluxe,17.54,true
+554,"Soup - Campbells, Creamy",18.49,false
+555,Mix Pina Colada,25.9,true
+556,Bacon Strip Precooked,14.53,true
+557,Chips Potato Reg 43g,13.69,false
+558,Table Cloth 54x54 Colour,15.18,true
+559,Bok Choy - Baby,1.62,true
+560,Spice - Onion Powder Granulated,21.49,true
+561,Magnotta - Bel Paese White,2.42,true
+562,Lady Fingers,25.44,true
+563,"Artichoke - Hearts, Canned",24.67,true
+564,Carbonated Water - Orange,20.39,true
+565,Glass Clear 8 Oz,19.4,true
+566,Filo Dough,23.68,true
+567,Grapes - Green,16.69,true
+568,Pan Grease,28.41,true
+569,Towel Dispenser,16.75,false
+570,Pate - Cognac,12.3,false
+571,"Pepper - Paprika, Spanish",24.85,true
+572,Towel - Roll White,2.05,false
+573,Island Oasis - Lemonade,4.37,false
+574,Cilantro / Coriander - Fresh,26.6,false
+575,Pork - Suckling Pig,20.0,true
+576,Tamarind Paste,27.45,false
+577,Nutmeg - Ground,21.74,true
+578,Oxtail - Cut,18.8,false
+579,Greens Mustard,29.01,false
+580,Apricots - Dried,26.4,true
+581,Tomatoes Tear Drop,28.96,true
+582,Coffee - Cafe Moreno,13.14,true
+583,Capers - Ox Eye Daisy,29.79,false
+584,Quail - Jumbo Boneless,28.53,true
+585,"Nestea - Ice Tea, Diet",13.18,true
+586,"Yogurt - Blueberry, 175 Gr",17.34,false
+587,"Basil - Primerba, Paste",20.5,false
+588,"Wine - Red, Harrow Estates, Cab",20.36,false
+589,Corn Syrup,21.4,true
+590,"Gin - Gilbeys London, Dry",25.32,false
+591,Cheese - Parmesan Cubes,24.11,true
+592,Oil - Grapeseed Oil,16.8,true
+593,Wine - Ej Gallo Sierra Valley,14.33,false
+594,"Fish - Scallops, Cold Smoked",19.84,false
+595,Flavouring Vanilla Artificial,2.1,false
+596,Appetizer - Assorted Box,24.68,false
+597,Hog / Sausage Casing - Pork,5.76,false
+598,Passion Fruit,17.1,true
+599,Bread - French Stick,24.39,false
+600,Wine - Jackson Triggs Okonagan,11.2,false
+601,Apple - Macintosh,28.14,false
+602,Sugar - Splenda Sweetener,3.81,false
+603,Steamers White,19.82,false
+604,V8 Splash Strawberry Banana,27.01,false
+605,Muffin - Mix - Mango Sour Cherry,8.83,true
+606,Grouper - Fresh,10.79,true
+607,Cookie Dough - Chunky,20.93,true
+608,Wine - German Riesling,20.75,false
+609,Beef - Rib Eye Aaa,1.53,true
+610,Wine - Stoneliegh Sauvignon,24.85,true
+611,Salt And Pepper Mix - White,11.52,false
+612,Bread - Onion Focaccia,7.55,false
+613,Pan Grease,20.31,true
+614,Relish,10.52,false
+615,Pate Pans Yellow,9.51,false
+616,"Sauce - Soya, Dark",14.13,true
+617,"Rum - Dark, Bacardi, Black",9.81,false
+618,"Quail - Whole, Boneless",20.21,false
+619,Beans - Soya Bean,21.79,false
+620,Galliano,3.78,false
+621,Soap - Hand Soap,23.64,false
+622,Wine - Lamancha Do Crianza,28.89,false
+623,Cranberries - Frozen,28.19,true
+624,Cheese - Perron Cheddar,3.72,false
+625,V8 Splash Strawberry Banana,23.88,true
+626,Soup V8 Roasted Red Pepper,20.34,true
+627,Sauce - Fish 25 Ozf Bottle,13.33,true
+628,Lettuce - Radicchio,23.18,false
+629,Ice Cream Bar - Drumstick,4.88,true
+630,Foil Wrap,24.21,true
+631,Mushroom - Portebello,20.99,true
+632,Bread Roll Foccacia,23.79,true
+633,Juice Peach Nectar,13.71,false
+634,Wine - Peller Estates Late,4.51,false
+635,Hog / Sausage Casing - Pork,11.3,true
+636,Cheese - Bakers Cream Cheese,6.53,true
+637,"Water - Mineral, Natural",21.73,false
+638,Pork Salted Bellies,15.71,true
+639,Sausage - Meat,17.22,true
+640,Godiva White Chocolate,4.2,false
+641,Soy Protein,8.08,true
+642,Molasses - Fancy,12.95,false
+643,Juice - Cranberry 284ml,12.57,true
+644,"Coconut - Shredded, Unsweet",3.08,true
+645,Squash - Acorn,29.65,false
+646,Salmon - Fillets,26.64,true
+647,Beef - Tenderloin,3.41,true
+648,Pepper - Scotch Bonnet,19.31,true
+649,Puree - Pear,10.88,false
+650,"Coffee - Colombian, Portioned",28.35,true
+651,Herb Du Provence - Primerba,21.37,true
+652,Pimento - Canned,11.21,false
+653,"Wine - Red, Wolf Blass, Yellow",27.66,false
+654,"Salmon - Smoked, Sliced",26.79,false
+655,Chicken - Ground,14.57,true
+656,Wine - Clavet Saint Emilion,1.59,false
+657,Wine - Malbec Trapiche Reserve,24.63,true
+658,Hog / Sausage Casing - Pork,20.21,false
+659,Blackberries,25.45,true
+660,Mustard - Dijon,24.67,true
+661,Cake - Mini Potato Pancake,17.44,false
+662,"Lemonade - Natural, 591 Ml",23.25,false
+663,Oil - Cooking Spray,18.72,false
+664,Beer - Moosehead,26.63,true
+665,Wine - Carmenere Casillero Del,10.75,true
+666,Lettuce Romaine Chopped,11.07,false
+667,Kellogs All Bran Bars,5.23,true
+668,Spice - Onion Powder Granulated,25.4,true
+669,Cup - 8oz Coffee Perforated,29.21,true
+670,Cookies - Englishbay Wht,6.89,false
+671,Bread - French Stick,19.98,false
+672,Wine - Cousino Macul Antiguas,19.51,false
+673,Bread - Raisin,23.94,true
+674,Greens Mustard,2.54,false
+675,Calypso - Strawberry Lemonade,22.73,false
+676,Irish Cream - Butterscotch,14.97,true
+677,Pastry - French Mini Assorted,27.49,true
+678,Soup Campbells Split Pea And Ham,26.3,false
+679,"Beans - Black Bean, Canned",20.78,false
+680,Apples - Spartan,26.29,true
+681,Cake - Box Window 10x10x2.5,4.93,true
+682,Fenngreek Seed,10.27,true
+683,Beer - Heinekin,4.02,true
+684,Mushrooms - Honey,25.38,true
+685,"Wine - Magnotta - Red, Baco",1.18,false
+686,Puff Pastry - Sheets,6.7,false
+687,Spaghetti Squash,21.26,false
+688,Chocolate - Feathers,22.39,true
+689,Shiro Miso,2.33,true
+690,Pasta - Cheese / Spinach Bauletti,12.22,true
+691,Basil - Fresh,16.83,false
+692,Butter Ripple - Phillips,10.64,false
+693,"Cake Circle, Foil, Scallop",21.38,false
+694,Pail With Metal Handle 16l White,4.98,true
+695,Bread - Corn Muffaleta Onion,21.25,true
+696,Spinach - Frozen,21.92,true
+697,Cabbage - Red,26.07,true
+698,Longos - Burritos,14.46,false
+699,"Pork - Bacon,back Peameal",21.29,false
+700,Orange - Blood,4.04,false
+701,Langers - Mango Nectar,4.2,true
+702,Pickle - Dill,2.92,false
+703,Yukon Jack,7.28,true
+704,Anchovy In Oil,26.92,true
+705,Potatoes - Peeled,10.82,false
+706,"Wine - White, Ej Gallo",3.14,true
+707,Chocolate Eclairs,15.28,true
+708,Cup - 4oz Translucent,16.75,false
+709,Pastry - French Mini Assorted,13.48,true
+710,Praline Paste,17.08,false
+711,"Cheese - Woolwich Goat, Log",10.21,false
+712,Seabream Whole Farmed,14.07,false
+713,Tequila - Sauza Silver,13.46,true
+714,"Pasta - Spaghetti, Dry",22.92,true
+715,"Pepper - Black, Ground",19.36,true
+716,"Tea - Darjeeling, Azzura",2.66,false
+717,Juice - Orangina,16.64,false
+718,Table Cloth 53x53 White,9.23,false
+719,Tea - Decaf 1 Cup,14.45,true
+720,Nantucket Pine Orangebanana,7.2,true
+721,"Soup - Beef Conomme, Dry",19.82,true
+722,Carrots - Jumbo,20.92,false
+723,Bread Cranberry Foccacia,2.44,false
+724,Puff Pastry - Slab,13.91,false
+725,Vegetable - Base,6.54,true
+726,Cabbage - Red,29.35,false
+727,Urban Zen Drinks,16.55,true
+728,Cape Capensis - Fillet,9.55,false
+729,"Cheese - Boursin, Garlic / Herbs",24.93,true
+730,Pear - Asian,12.36,true
+731,Banana Turning,17.41,false
+732,Bread - Bistro Sour,17.47,false
+733,Southern Comfort,28.96,true
+734,Soup Campbells Beef With Veg,8.03,false
+735,"Veal - Brisket, Provimi,bnls",14.17,true
+736,"Wine - Red, Mouton Cadet",21.37,false
+737,Table Cloth - 53x69 Colour,2.54,true
+738,"Soup - Knorr, Ministrone",8.47,false
+739,Syrup - Kahlua Chocolate,21.37,false
+740,Mini - Vol Au Vents,4.67,true
+741,Eggwhite Frozen,16.03,true
+742,Contreau,19.52,true
+743,Potatoes - Mini Red,10.18,false
+744,"Pepsi, 355 Ml",8.62,true
+745,Brandy Apricot,10.57,false
+746,"Pepper - White, Ground",15.43,false
+747,Lamb - Whole Head Off,3.17,true
+748,Cheese - Goat With Herbs,17.19,false
+749,Fish - Bones,6.57,false
+750,Wine - George Duboeuf Rose,29.93,false
+751,Bag - Regular Kraft 20 Lb,18.86,false
+752,Wine - Jafflin Bourgongone,8.4,false
+753,Turkey Tenderloin Frozen,8.71,true
+754,"Pepper - Chillies, Crushed",8.64,true
+755,Lady Fingers,20.5,true
+756,Yukon Jack,1.22,true
+757,Muffin Puck Ww Carrot,18.6,true
+758,Sauce Tomato Pouch,21.34,true
+759,Baking Powder,11.71,false
+760,Lemon Grass,8.92,false
+761,"Cheese - Mozzarella, Buffalo",27.88,false
+762,Cape Capensis - Fillet,24.08,true
+763,Butter - Salted,16.88,false
+764,Coffee Cup 12oz 5342cd,3.98,false
+765,Sugar Thermometer,20.39,false
+766,Spinach - Baby,1.09,true
+767,"Red Snapper - Fillet, Skin On",17.92,true
+768,Mahi Mahi,25.67,false
+769,Chips - Potato Jalapeno,11.39,true
+770,Cheese - Parmigiano Reggiano,21.44,false
+771,Juice - Lagoon Mango,10.4,false
+772,Chevril,27.77,false
+773,Chicken - Soup Base,22.8,true
+774,Hot Chocolate - Individual,3.0,false
+775,Ecolab - Hand Soap Form Antibac,18.15,false
+776,Onions - Pearl,9.06,true
+777,"Appetizer - Spring Roll, Veg",28.8,true
+778,"Mushroom - Shitake, Fresh",4.64,false
+779,"Vermacelli - Sprinkles, Assorted",18.79,false
+780,Wine - Sake,27.47,false
+781,Coffee - Dark Roast,18.41,false
+782,Versatainer Nc - 8288,18.06,true
+783,Tea Leaves - Oolong,19.02,true
+784,Food Colouring - Blue,27.15,true
+785,Cotton Wet Mop 16 Oz,27.14,true
+786,"Crab - Blue, Frozen",28.75,false
+787,Salt - Sea,25.76,false
+788,Eggroll,27.84,true
+789,Yoghurt Tubes,23.77,false
+790,Fenngreek Seed,21.51,false
+791,"Fish - Atlantic Salmon, Cold",22.52,true
+792,Juice - Ocean Spray Kiwi,6.38,true
+793,Peppercorns - Pink,8.7,false
+794,Wine - Touraine Azay - Le - Rideau,3.35,false
+795,French Pastry - Mini Chocolate,16.36,true
+796,"Crab - Claws, Snow 16 - 24",20.17,false
+797,Beef Flat Iron Steak,8.28,false
+798,Cheese Cloth No 60,22.66,false
+799,Apples - Sliced / Wedge,15.08,true
+800,Beef - Kobe Striploin,24.32,true
+801,Wine - Ruffino Chianti,26.89,false
+802,Dried Cherries,25.28,true
+803,Hog / Sausage Casing - Pork,21.82,false
+804,"Chicken - Base, Ultimate",15.95,true
+805,"Lamb - Whole Head Off,nz",10.61,false
+806,Beef - Top Sirloin,7.2,true
+807,Lobak,17.74,true
+808,"Turkey - Breast, Smoked",17.12,true
+809,Flour - Rye,12.7,true
+810,Wine - Sake,18.1,true
+811,Foam Cup 6 Oz,10.52,true
+812,Capon - Whole,7.31,true
+813,"Chicken - Leg, Fresh",15.75,true
+814,Tomatoes - Yellow Hot House,7.21,false
+815,Sprouts - Peppercress,29.92,true
+816,Chinese Foods - Cantonese,7.25,true
+817,Parsnip,3.6,false
+818,"Pasta - Tortellini, Fresh",16.6,false
+819,Water - Spring Water 500ml,29.0,true
+820,Chocolate Eclairs,5.18,true
+821,"Rice Pilaf, Dry,package",3.31,false
+822,Curry Paste - Madras,14.8,true
+823,Wine - Magnotta - Belpaese,4.83,false
+824,Gatorade - Fruit Punch,22.26,false
+825,Parsley - Fresh,20.16,false
+826,"Pork - Chop, Frenched",15.87,true
+827,Apple - Macintosh,28.02,false
+828,Lemon Grass,21.69,false
+829,"Quail - Whole, Bone - In",9.63,false
+830,Tobasco Sauce,2.3,false
+831,Beer - Blue Light,18.05,true
+832,Vodka - Smirnoff,3.93,false
+833,Worcestershire Sauce,6.75,false
+834,Vinegar - White,15.11,false
+835,Bread Base - Gold Formel,19.74,true
+836,"Club Soda - Schweppes, 355 Ml",23.75,true
+837,Wine - Chenin Blanc K.w.v.,2.05,true
+838,Vinegar - Tarragon,10.73,true
+839,Pails With Lids,5.68,true
+840,Mushrooms - Honey,6.0,true
+841,Pate Pans Yellow,16.81,false
+842,Wasabi Powder,16.81,true
+843,Calypso - Black Cherry Lemonade,11.75,false
+844,Gooseberry,13.2,true
+845,Beef - Montreal Smoked Brisket,15.14,true
+846,"Beef - Ground, Extra Lean, Fresh",16.65,false
+847,Kippers - Smoked,28.65,false
+848,Wine - Saint Emilion Calvet,19.89,false
+849,Beer - Pilsner Urquell,27.27,false
+850,Smirnoff Green Apple Twist,28.7,true
+851,Bread - Raisin Walnut Pull,18.59,false
+852,Puree - Raspberry,28.6,true
+853,Pork - Suckling Pig,6.96,false
+854,Bowl 12 Oz - Showcase 92012,21.72,true
+855,Beans - Green,29.59,false
+856,Skewers - Bamboo,5.46,true
+857,Truffle Cups - White Paper,20.65,false
+858,Scallops - Live In Shell,8.96,false
+859,Tea Peppermint,25.0,true
+860,Chicken Breast Halal,7.96,true
+861,"Salmon - Atlantic, Skin On",9.32,true
+862,Table Cloth 62x114 White,11.92,false
+863,Cream - 18%,9.4,false
+864,Wine - Riesling Alsace Ac 2001,14.15,false
+865,"Chilli Paste, Hot Sambal Oelek",13.73,false
+866,Sauce - Hoisin,7.48,true
+867,Energy Drink - Redbull 355ml,11.75,true
+868,Pears - Bartlett,28.36,true
+869,Wine - Vidal Icewine Magnotta,11.7,true
+870,"Yogurt - Strawberry, 175 Gr",20.79,true
+871,Parsley Italian - Fresh,17.29,false
+872,Browning Caramel Glace,19.92,true
+873,Chocolate - Compound Coating,2.37,true
+874,"Pepper - Black, Ground",10.28,true
+875,Parsnip,29.37,true
+876,Port - 74 Brights,24.94,true
+877,Soupcontfoam16oz 116con,19.07,false
+878,Jack Daniels,16.76,true
+879,Wasabi Powder,20.4,true
+880,Muffin Batt - Choc Chk,23.61,true
+881,Russian Prince,13.45,false
+882,Tea - Herbal Orange Spice,2.35,false
+883,Milk - 1%,24.11,true
+884,Rice - 7 Grain Blend,3.51,true
+885,Pail For Lid 1537,15.87,false
+886,Beef - Ground Lean Fresh,27.78,false
+887,"Lettuce - Romaine, Heart",21.07,false
+888,Wine - Charddonnay Errazuriz,26.73,true
+889,"Basil - Primerba, Paste",11.79,false
+890,"Cheese - Brie, Cups 125g",19.94,true
+891,Oil - Hazelnut,25.88,false
+892,Parsley Italian - Fresh,11.55,false
+893,Wine - Beringer Founders Estate,16.14,false
+894,"Mushrooms - Black, Dried",12.41,false
+895,Steampan - Lid For Half Size,28.79,false
+896,Wine - Winzer Krems Gruner,24.11,true
+897,Ecolab - Solid Fusion,5.6,true
+898,Cleaner - Comet,10.6,false
+899,Cheese - Feta,17.21,true
+900,Dragon Fruit,10.26,true
+901,Oil - Olive,8.01,false
+902,Campari,3.01,true
+903,Wine - Lou Black Shiraz,21.33,false
+904,Bread - French Stick,6.12,true
+905,Ginsing - Fresh,11.17,false
+906,Eggplant - Asian,13.2,true
+907,Lettuce - California Mix,27.92,false
+908,Bread - Ciabatta Buns,25.48,false
+909,Longos - Chicken Wings,25.76,true
+910,Apple - Custard,26.47,true
+911,Wine - Gato Negro Cabernet,9.12,false
+912,Coffee - 10oz Cup 92961,20.21,true
+913,"Lamb - Whole Head Off,nz",23.89,true
+914,Bread - Petit Baguette,1.74,true
+915,Emulsifier,12.92,false
+916,Chicken - Bones,4.7,true
+917,Beans - French,10.16,false
+918,Vinegar - Cider,21.0,true
+919,"Rice Pilaf, Dry,package",4.92,true
+920,Cherries - Fresh,26.1,false
+921,Smoked Paprika,20.6,false
+922,"Appetizer - Mini Egg Roll, Shrimp",17.38,false
+923,Gatorade - Xfactor Berry,10.52,true
+924,Madeira,20.5,false
+925,Kahlua,17.77,true
+926,"Fish - Halibut, Cold Smoked",18.21,false
+927,Wine - Magnotta - Cab Franc,11.69,true
+928,Shrimp - Black Tiger 16/20,16.66,true
+929,"Sauce - Bernaise, Mix",8.52,false
+930,Sour Puss Raspberry,18.71,true
+931,Compound - Pear,1.22,false
+932,Bagel - Everything Presliced,23.75,false
+933,Yogurt - French Vanilla,8.92,true
+934,Bagel - Whole White Sesame,15.51,false
+935,Soup - Base Broth Chix,25.33,true
+936,"Coke - Diet, 355 Ml",18.1,true
+937,Cheese - Cambozola,15.3,false
+938,Meldea Green Tea Liquor,17.61,true
+939,Sauce - Thousand Island,28.67,true
+940,Pie Box - Cello Window 2.5,6.28,true
+941,Lamb - Ground,9.65,true
+942,"Lid - High Heat, Super Clear",20.88,true
+943,"Nut - Walnut, Chopped",5.64,false
+944,Chips - Miss Vickies,15.9,false
+945,Soup - Chicken And Wild Rice,19.9,true
+946,"Veal - Brisket, Provimi, Bone - In",2.39,false
+947,Ice Cream - Chocolate,18.74,false
+948,Cilantro / Coriander - Fresh,20.99,true
+949,"Pork - Back, Short Cut, Boneless",19.32,true
+950,Capicola - Hot,8.82,true
+951,Potatoes - Idaho 80 Count,22.12,false
+952,Shrimp - Tiger 21/25,7.17,true
+953,"Sauce - Gravy, Au Jus, Mix",12.14,false
+954,"Tart Shells - Barquettes, Savory",14.4,false
+955,Parasol Pick Stir Stick,10.78,false
+956,Lamb - Sausage Casings,25.33,true
+957,"Carrots - Purple, Organic",23.99,false
+958,"Cheese - Boursin, Garlic / Herbs",4.41,true
+959,"Ecolab - Orange Frc, Cleaner",21.75,false
+960,Carroway Seed,21.35,true
+961,Crackers Cheez It,13.14,false
+962,Veal - Striploin,7.27,false
+963,"Tart Shells - Sweet, 3",24.57,false
+964,Wine - Bouchard La Vignee Pinot,17.51,true
+965,Syrup - Monin - Granny Smith,15.33,false
+966,Corn Syrup,5.44,true
+967,Wine - Charddonnay Errazuriz,26.33,true
+968,"Coffee - Beans, Whole",1.3,false
+969,Soup Bowl Clear 8oz92008,22.25,false
+970,Wine - Magnotta - Belpaese,3.8,true
+971,Wine - Casillero Deldiablo,10.98,true
+972,"Doilies - 10, Paper",24.29,true
+973,Honey - Liquid,25.77,true
+974,Coffee - Frthy Coffee Crisp,7.46,false
+975,Flour - Pastry,28.99,true
+976,Glaze - Apricot,4.8,true
+977,"Fish - Artic Char, Cold Smoked",2.43,true
+978,Yoplait Drink,11.01,true
+979,Phyllo Dough,17.07,false
+980,"Pepper - White, Ground",22.06,true
+981,Sage - Ground,22.34,true
+982,Beef - Tenderloin Tails,7.52,false
+983,"Brownies - Two Bite, Chocolate",10.69,true
+984,Tuna - Fresh,1.82,false
+985,Muffin - Blueberry Individual,18.4,true
+986,Chicken - Soup Base,3.66,true
+987,Beer - Camerons Cream Ale,20.41,false
+988,Wine - Piper Heidsieck Brut,27.78,false
+989,"Beans - Navy, Dry",5.75,false
+990,Dragon Fruit,28.39,false
+991,Mayonnaise - Individual Pkg,24.53,false
+992,Wine - Delicato Merlot,2.25,false
+993,Icecream - Dibs,29.65,false
+994,Versatainer Nc - 8288,26.66,false
+995,Wine - Maipo Valle Cabernet,29.46,false
+996,Cactus Pads,9.99,false
+997,"Shrimp - 16/20, Peeled Deviened",16.43,true
+998,Sprouts Dikon,13.66,false
+999,Star Fruit,9.12,false
+1000,Ecolab - Hobart Washarm End Cap,23.6,true
