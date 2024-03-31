@@ -89,7 +89,7 @@ jobs:
                     "type": "section",
                     "text": {
                       "type": "mrkdwn",
-                      "text": "*Summary:*"
+                      "text": "The latest *production* run of dbt was unsuccessful."
                     }
                   },
                   {
