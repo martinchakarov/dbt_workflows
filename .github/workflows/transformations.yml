@@ -25,6 +25,7 @@ jobs:
         run: |
           curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
           pipenv install
+          set -o pipefail
       - name: Install dbt dependencies
         run: pipenv run dbt deps --target prod
       - name: Check ingestion warehouse status
@@ -40,6 +41,7 @@ jobs:
         if: ${{ success() }}
         run: pipenv run dbt build --target prod | tee action_logs.log
       - name: Generate documentation
+        if: ${{ success() }}
         run: pipenv run dbt docs generate --target prod | tee action_logs.log
       - name: Clear cache
         if: ${{ success() }}
