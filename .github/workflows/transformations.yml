@@ -78,6 +78,8 @@ jobs:
         if: ${{ failure() }}
         run: |
           grep -e fail -e error -e skip -i action_logs.log > filtered_logs.log
+          RUN_LOGS=$(cat filtered_logs.log)
+          echo "RUN_LOGS=$RUN_LOGS" >> $GITHUB_ENV
           curl ${{ secrets.SLACK_DBT_NOTIFICATION_WEBHOOK_URL }} \
             --request POST \
             --header 'Content-type: application/json' \
@@ -106,7 +108,7 @@ jobs:
                         "elements": [
                           {
                             "type": "text",
-                            "text": "$(cat filtered_logs.log)"
+                            "text": "${{ env.RUN_LOGS }}"
                           }
                         ],
                         "border": 0
@@ -126,7 +128,7 @@ jobs:
                         "text": "Navigate to GitHub"
                       },
                       "style": "primary",
-                      "url": "{{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
                     }
                   }
                 ]
