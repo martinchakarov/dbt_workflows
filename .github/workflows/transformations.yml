@@ -51,17 +51,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
       - name: Cache manifest file
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: target/manifest.json
           key: manifest
       - name: Cache catalog file
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: target/catalog.json
           key: catalog
       - name: Cache index file
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: target/index.html
           key: index
@@ -101,19 +101,19 @@ jobs:
         with:
           ref: refs/heads/gh-pages
       - name: Restore manifest file
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: target/manifest.json
           key: manifest
           fail-on-cache-miss: true
       - name: Restore catalog file
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: target/catalog.json
           key: catalog
           fail-on-cache-miss: true
       - name: Restore index file
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: target/index.html
           key: index

@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Restore manifest file
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: target/manifest.json
           key: manifest
