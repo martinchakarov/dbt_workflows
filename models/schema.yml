@@ -4,6 +4,13 @@ sources:
     schema: raw_eu # Europe
     tables:
       - name: customers
+        freshness:
+          warn_after:
+            count: 6
+            period: hour
+          error_after:
+            count: 12
+            period: hour
         columns:
           - name: id
           - name: first_name
@@ -13,16 +20,37 @@ sources:
           - name: ip_address
           - name: region
       - name: orders
+        freshness:
+          warn_after:
+            count: 6
+            period: hour
+          error_after:
+            count: 12
+            period: hour
         columns:
           - name: id
           - name: date
           - name: customer_id
       - name: order_items
+        freshness:
+          warn_after:
+            count: 6
+            period: hour
+          error_after:
+            count: 12
+            period: hour
         columns:
           - name: order_id
           - name: product_id
           - name: quantity
       - name: products
+        freshness:
+          warn_after:
+            count: 6
+            period: hour
+          error_after:
+            count: 12
+            period: hour
         columns:
           - name: id
           - name: name
@@ -33,6 +61,13 @@ sources:
     schema: raw_au # Australia
     tables:
       - name: customers
+        freshness:
+          warn_after:
+            count: 6
+            period: hour
+          error_after:
+            count: 12
+            period: hour
         columns:
           - name: id
           - name: first_name
@@ -42,16 +77,37 @@ sources:
           - name: ip_address
           - name: region
       - name: orders
+        freshness:
+          warn_after:
+            count: 6
+            period: hour
+          error_after:
+            count: 12
+            period: hour
         columns:
           - name: id
           - name: date
           - name: customer_id
       - name: order_items
+        freshness:
+          warn_after:
+            count: 6
+            period: hour
+          error_after:
+            count: 12
+            period: hour
         columns:
           - name: order_id
           - name: product_id
           - name: quantity
       - name: products
+        freshness:
+          warn_after:
+            count: 6
+            period: hour
+          error_after:
+            count: 12
+            period: hour
         columns:
           - name: id
           - name: name
@@ -62,6 +118,13 @@ sources:
     schema: raw_na # North America
     tables:
       - name: customers
+        freshness:
+          warn_after:
+            count: 6
+            period: hour
+          error_after:
+            count: 12
+            period: hour
         columns:
           - name: id
           - name: first_name
@@ -71,16 +134,37 @@ sources:
           - name: ip_address
           - name: region
       - name: orders
+        freshness:
+          warn_after:
+            count: 6
+            period: hour
+          error_after:
+            count: 12
+            period: hour
         columns:
           - name: id
           - name: date
           - name: customer_id
       - name: order_items
+        freshness:
+          warn_after:
+            count: 6
+            period: hour
+          error_after:
+            count: 12
+            period: hour
         columns:
           - name: order_id
           - name: product_id
           - name: quantity
       - name: products
+        freshness:
+          warn_after:
+            count: 6
+            period: hour
+          error_after:
+            count: 12
+            period: hour
         columns:
           - name: id
           - name: name
