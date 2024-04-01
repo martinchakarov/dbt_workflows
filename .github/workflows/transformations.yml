@@ -132,7 +132,6 @@ jobs:
         with:
           name: index
           path: target/index.html
-          retention-days: 1
       - name: Update documentation
         run: |
           rm -rf docs
