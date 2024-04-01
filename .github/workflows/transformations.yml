@@ -46,7 +46,7 @@ jobs:
         run: |
           pipenv run dbt docs generate --target prod
       - name: Upload artifacts
-        uses: upload-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           path: |
             target/manifest.json
