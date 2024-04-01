@@ -17,6 +17,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: refs/heads/main
+      - name: Compile dbt project
         run: dbt compile --target prod
       - name: Cache manifest file
         uses: actions/cache/save@v4
