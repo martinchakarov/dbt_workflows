@@ -11,6 +11,18 @@ env:
   DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
 
 jobs:
+  get-manifest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+      - uses: actions/checkout@v4
+        with:
+          ref: refs/heads/main
+        run: dbt compile --target prod
+      - name: Cache manifest file
+        uses: actions/cache/save@v4
+        with:
+          path: target/manifest.json
+          key: manifest-${{ github.run_id }}
   ci-run:
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -20,7 +32,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: target/manifest.json
-          key: manifest
+          key: manifest-${{ github.run_id }}
           fail-on-cache-miss: true
       - name: Move manifest file to root directory
         run: mv target/manifest.json .
