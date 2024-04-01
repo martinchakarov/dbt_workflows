@@ -45,13 +45,26 @@ jobs:
         if: ${{ success() }}
         run: |
           pipenv run dbt docs generate --target prod
-      - name: Upload artifacts
+      - name: Upload manifest
+        if: ${{ success() }}
         uses: actions/upload-artifact@v4
         with:
-          path: |
-            target/manifest.json
-            target/catalog.json
-            target/index.html
+          name: manifest
+          path: target/manifest.json
+          retention-days: 1
+      - name: Upload catalog
+        if: ${{ success() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog
+          path: target/catalog.json
+          retention-days: 1
+      - name: Upload index
+        if: ${{ success() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: index
+          path: target/index.html
           retention-days: 1
       - name: Send Slack notification
         if: ${{ failure() }}
@@ -104,24 +117,22 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: refs/heads/gh-pages
-      - name: Restore manifest file
-        uses: actions/cache/restore@v4
+      - name: Download manifest
+        uses: actions/download-artifact@v4
         with:
+          name: manifest
           path: target/manifest.json
-          key: manifest
-          fail-on-cache-miss: true
-      - name: Restore catalog file
-        uses: actions/cache/restore@v4
+      - name: Download catalog
+        uses: actions/download-artifact@v4
         with:
+          name: catalog
           path: target/catalog.json
-          key: catalog
-          fail-on-cache-miss: true
-      - name: Restore index file
-        uses: actions/cache/restore@v4
+      - name: Download index
+        uses: actions/upload-artifact@v4
         with:
+          name: index
           path: target/index.html
-          key: index
-          fail-on-cache-miss: true
+          retention-days: 1
       - name: Update documentation
         run: |
           rm -rf docs
