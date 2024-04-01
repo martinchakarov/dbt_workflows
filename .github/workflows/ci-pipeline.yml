@@ -29,13 +29,14 @@ jobs:
       - name: Install dbt dependenciees
         run: pipenv run dbt deps --target dev
       - name: Compile dbt project
-        run: dbt compile --target prod
+        run: pipenv run dbt compile --target prod
       - name: Cache manifest file
         uses: actions/cache/save@v4
         with:
           path: target/manifest.json
           key: manifest-${{ github.run_id }}
   ci-run:
+    needs: get-manifest
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
