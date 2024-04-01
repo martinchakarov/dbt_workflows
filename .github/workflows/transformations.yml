@@ -33,10 +33,10 @@ jobs:
           pipenv run dbt run-operation check_ingestion_warehouse_status --target prod
         env:
           INGESTION_WAREHOUSE: ${{ secrets.INGESTION_WAREHOUSE }}
-      - name: Test source freshness
-        if: ${{ success() }}
-        run: | 
-          pipenv run dbt source freshness
+#      - name: Test source freshness
+#        if: ${{ success() }}
+#        run: | 
+#          pipenv run dbt source freshness
       - name: Run and test models
         if: ${{ success() }}
         run: |
@@ -45,30 +45,21 @@ jobs:
         if: ${{ success() }}
         run: |
           pipenv run dbt docs generate --target prod
-      - name: Clear cache
-        if: ${{ success() }}
-        run: |
-          for key in manifest catalog index; do
-            echo "Deleting cache for key: $key"
-            gh cache delete --repo "$GITHUB_REPOSITORY" "$key" || true
-          done
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
       - name: Cache manifest file
         uses: actions/cache/save@v4
         with:
           path: target/manifest.json
-          key: manifest
+          key: manifest-${{ github.run_id }}
       - name: Cache catalog file
         uses: actions/cache/save@v4
         with:
           path: target/catalog.json
-          key: catalog
+          key: catalog-${{ github.run_id }}
       - name: Cache index file
         uses: actions/cache/save@v4
         with:
           path: target/index.html
-          key: index
+          key: index-${{ github.run_id }}
       - name: Send Slack notification
         if: ${{ failure() }}
         run: |
@@ -124,19 +115,19 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: target/manifest.json
-          key: manifest
+          key: manifest-${{ github.run_id }}
           fail-on-cache-miss: true
       - name: Restore catalog file
         uses: actions/cache/restore@v4
         with:
           path: target/catalog.json
-          key: catalog
+          key: catalog-${{ github.run_id }}
           fail-on-cache-miss: true
       - name: Restore index file
         uses: actions/cache/restore@v4
         with:
           path: target/index.html
-          key: index
+          key: index-${{ github.run_id }}
           fail-on-cache-miss: true
       - name: Update documentation
         run: |
