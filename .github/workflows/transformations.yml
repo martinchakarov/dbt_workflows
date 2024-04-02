@@ -60,6 +60,14 @@ jobs:
         with:
           path: target/index.html
           key: index-${{ github.run_id }}
+      - name: Create deployment PR
+        run: |
+          git checkout -B merge-main-into-production production
+          git merge main
+          git push --set-upstream origin merge-main-into-production --force
+          gh pr create -B production --title "Merge changes into production" --body "Created automatically"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Send Slack notification
         if: ${{ failure() }}
         run: |
