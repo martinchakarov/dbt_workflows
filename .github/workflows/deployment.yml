@@ -18,7 +18,8 @@ jobs:
       - name: Create deployment PR
         run: |
           git fetch --all
-          git checkout -B merge-main-into-production origin/production
+          git checkout -B production origin/production
+          git checkout -b merge-main-into-production
           git rebase origin/main
           git push --set-upstream origin merge-main-into-production --force
           gh pr create -B production --title "Merge changes into production" --body "Created automatically"
