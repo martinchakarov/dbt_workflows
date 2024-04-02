@@ -19,7 +19,7 @@ jobs:
         run: |
           git fetch --all
           git checkout -B merge-main-into-production origin/production
-          git merge origin/main
+          git rebase origin/main
           git push --set-upstream origin merge-main-into-production --force
           gh pr create -B production --title "Merge changes into production" --body "Created automatically"
         env:
