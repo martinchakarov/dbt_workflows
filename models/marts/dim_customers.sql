@@ -8,8 +8,7 @@ FINAL AS (
         FIRST_NAME || ' ' || LAST_NAME AS NAME,
         EMAIL,
         CASE WHEN GENDER NOT IN ('Male', 'Female') THEN 'Other' ELSE GENDER END AS GENDER,
-        IP_ADDRESS,
-        1 as test
+        IP_ADDRESS
     FROM {{ ref('stg_customers') }}
 )
 

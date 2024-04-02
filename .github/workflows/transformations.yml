@@ -133,8 +133,8 @@ jobs:
         run: |
           rm -rf docs
           mv target docs
-          git config user.email "martin@chakarov.com"
-          git config user.name "Martin"
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
           git add --force docs/manifest.json docs/catalog.json docs/index.html
           git commit -m "Update documentation"
           git push --set-upstream origin gh-pages 
