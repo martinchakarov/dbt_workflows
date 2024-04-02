@@ -17,7 +17,7 @@ jobs:
           git config user.name "GitHub Action"
       - name: Create deployment PR
         run: |
-          git fetch --all
+          git fetch --unshallow
           git checkout -B production origin/production
           git checkout -b merge-main-into-production
           git rebase origin/main
