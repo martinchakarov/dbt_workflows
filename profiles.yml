@@ -22,7 +22,7 @@ dbt_workflows:
       warehouse: dbt_warehouse
     ci:
       account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
-      database: dbt_database
+      database: dev_database
       password: "{{ env_var('DBT_PASSWORD') }}"
       role: dbt_role
       schema: CI_SCHEMA

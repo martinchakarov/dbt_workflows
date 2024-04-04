@@ -29,7 +29,7 @@ jobs:
       - name: Install dbt dependenciees
         run: pipenv run dbt deps --target dev
       - name: Compile dbt project
-        run: pipenv run dbt parse --target prod
+        run: pipenv run dbt compile --target prod
       - name: Cache manifest file
         uses: actions/cache/save@v4
         with:
@@ -58,7 +58,7 @@ jobs:
       - name: Install Pipenv dependencies
         run: pipenv install
       - name: Install dbt dependenciees
-        run: pipenv run dbt deps --target dev
+        run: pipenv run dbt deps --target ci
       - name: Run and test models
         run: pipenv run dbt build --select "state:modified+" --defer --state . --target ci
       - name: Drop CI schema
