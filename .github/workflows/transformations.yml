@@ -23,7 +23,7 @@ jobs:
           cache: 'pipenv'
       - name: Install Pipenv
         run: |
-          curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
+          pip install --user pipenv
           pipenv install
       - name: Install dbt dependencies
         run: | 
