@@ -20,7 +20,6 @@ seeds:
 
 models:
   dbt_workflows:
-    enabled: false
     staging:
       +materialized: view
     marts:
