@@ -1,0 +1,144 @@
+name: Tests
+on:
+  # schedule:
+    # - cron: "30 */6 * * *" # at minute 30 past every 6th hour
+
+  workflow_dispatch:
+
+env:
+  SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+  DBT_USER: ${{ secrets.DBT_USER }}
+  DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
+
+jobs:
+  production-run:
+    name: dbt Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+          cache: 'pipenv'
+      - name: Install Pipenv
+        run: |
+          pip install --user pipenv
+          pipenv install
+      - name: Install dbt dependencies
+        run: | 
+          pipenv run dbt deps --target prod
+
+      - name: Check ingestion warehouse status (initial check)
+        id: check_initial
+        run: | 
+          result=$(pipenv run dbt run-operation check_ingestion_warehouse_status --target prod --args '{"fail_when_active": false}')
+          echo "$result"
+          if echo "$result" | grep -q 'WARNING: The ingestion warehouse is still active.'; then
+            echo "check_result=warning" >> $GITHUB_ENV
+          else
+            echo "check_result=success" >> $GITHUB_ENV
+          fi
+        env:
+          INGESTION_WAREHOUSE: ${{ secrets.INGESTION_WAREHOUSE }}
+        shell: bash
+
+      - name: Wait before retrying warehouse check
+        if: ${{ env.check_result == 'warning' }}
+        run: |
+          echo "Warehouse is active, waiting for 3 minutes before re-checking."
+          sleep 180
+
+      - name: Check ingestion warehouse status (2nd attempt)
+        if: ${{ env.check_result == 'warning' }}
+        run: | 
+          result=$(pipenv run dbt run-operation check_ingestion_warehouse_status --target prod --args '{"fail_when_active": false}')
+          echo "$result"
+          if echo "$result" | grep -q 'WARNING: The ingestion warehouse is still active.'; then
+            echo "check_result=warning" >> $GITHUB_ENV
+          else
+            echo "check_result=success" >> $GITHUB_ENV
+          fi
+        env:
+          INGESTION_WAREHOUSE: ${{ secrets.INGESTION_WAREHOUSE }}
+        shell: bash
+
+      - name: Wait before retrying warehouse check
+        if: ${{ env.check_result == 'warning' }}
+        run: |
+          echo "Warehouse is still active, waiting for 3 minutes before final attempt."
+          sleep 180
+
+      - name: Check ingestion warehouse status (final attempt)
+        if: ${{ env.check_result == 'warning' }}
+        id: final_check
+        run: |
+          pipenv run dbt run-operation check_ingestion_warehouse_status --target prod --args '{"fail_when_active": true}' 2>&1 | tee final_warehouse_check.log
+        env:
+          INGESTION_WAREHOUSE: ${{ secrets.INGESTION_WAREHOUSE }}
+        shell: bash
+
+      - name: Test dbt models
+        id: test_dbt_models
+        if: ${{ success() }}
+        run: |
+          pipenv run dbt test --target prod
+        shell: bash
+
+      - name: Parse model errors
+        if: ${{ failure() }}
+        id: parse_model_errors
+        run: |
+          echo "Parsing error logs."
+          errors=$(cat target/run_results.json | jq -r '.results[] | select(.status | (contains("fail") or contains("error"))) | .message')
+          if [[ -n "$errors" ]]; then
+            slack_message="\"\`\`\`$(echo "$errors" | jq -s -R '.' | tr -d '"')\`\`\`\""
+            echo "slack_message=$slack_message" >> $GITHUB_ENV
+          fi
+        shell: bash
+
+      - name: Send Slack notification
+        if: ${{ failure() }}
+        run: |
+            curl ${{ secrets.SLACK_DBT_NOTIFICATION_WEBHOOK_URL }} \
+              --request POST \
+              --header 'Content-type: application/json' \
+              --data \
+                '{
+                  "blocks": [
+                    {
+                      "type": "header",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "${{ github.workflow }} job has failed"
+                      }
+                    },
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": ${{ env.slack_message }}
+                      }
+                    },
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "Full logs available on GitHub"
+                      },
+                      "accessory": {
+                        "type": "button",
+                        "text": {
+                          "type": "plain_text",
+                          "text": "Navigate to GitHub"
+                        },
+                        "style": "primary",
+                        "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                      }
+                    }
+                  ]
+                }'
+        shell: bash
+
+
+          
