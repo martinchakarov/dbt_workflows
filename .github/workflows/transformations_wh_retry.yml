@@ -10,6 +10,7 @@ env:
   DBT_USER: ${{ secrets.DBT_USER }}
   DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
   TARGET: prod
+  SLACK_MESSAGE: "Unknown error, please check the logs on GitHub."
 
 jobs:
   production-run:
@@ -85,7 +86,7 @@ jobs:
         shell: bash
 
       - name: Parse ingestion warehouse error
-        if: steps.final_check.outcome == 'failure'
+        if: ${{ failure() && steps.final_check.outcome == 'failure' }}
         run: |
           echo "Parsing error."
           slack_message="\"\`\`\`$(echo "The pipeline was stopped because the ingestion warehouse is active or hasn't been resumed in the defined timeframe." | jq -s -R '.' | tr -d '"')\`\`\`\""
@@ -100,7 +101,7 @@ jobs:
         shell: bash
 
       - name: Parse seed errors
-        if: steps.run_dbt_seed.outcome == 'failure'
+        if: ${{ failure() && steps.run_dbt_seed.outcome == 'failure' }}
         id: parse_seed_errors
         run: |
           echo "Parsing error message..."
@@ -120,7 +121,7 @@ jobs:
         shell: bash
 
       - name: Parse model errors
-        if: steps.run_dbt_models.outcome == 'failure'
+        if: ${{ failure() && steps.run_dbt_models.outcome == 'failure' }}
         id: parse_model_errors
         run: |
           echo "Parsing error logs..."
