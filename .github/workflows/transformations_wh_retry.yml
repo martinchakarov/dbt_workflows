@@ -90,9 +90,9 @@ jobs:
         id: parse_seed_errors
         run: |
           echo "Parsing error logs."
-          errors=$(cat target/run_results.json | jq '.results[] | select(.status | (contains("fail") or contains("error"))) | .message')
+          errors=$(cat target/run_results.json | jq -r '.results[] | select(.status | (contains("fail") or contains("error"))) | .message')
           if [[ -n "$errors" ]]; then
-            echo "slack_message=$(echo "$errors" | sed "s/\"/'/g")" >> $GITHUB_ENV
+            echo "slack_message=$(echo "$errors" | jq -R -s '.' | jq 'gsub("\""; "'\''")')" >> $GITHUB_ENV
           fi
         shell: bash
 
@@ -108,9 +108,9 @@ jobs:
         id: parse_model_errors
         run: |
           echo "Parsing error logs."
-          errors=$(cat target/run_results.json | jq '.results[] | select(.status | (contains("fail") or contains("error"))) | .message')
+          errors=$(cat target/run_results.json | jq -r '.results[] | select(.status | (contains("fail") or contains("error"))) | .message')
           if [[ -n "$errors" ]]; then
-            echo "slack_message=$(echo "$errors" | sed "s/\"/'/g")" >> $GITHUB_ENV
+            echo "slack_message=$(echo "$errors" | jq -R -s '.' | jq 'gsub("\""; "'\''")')" >> $GITHUB_ENV
           fi
         shell: bash
 
