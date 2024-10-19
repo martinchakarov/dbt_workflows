@@ -82,82 +82,97 @@ jobs:
         if: ${{ success() }}
         id: run_dbt_seed
         run: |
-          pipenv run dbt seed --target prod 2>&1 | tee dbt_seed_output.log
+          pipenv run dbt seed --target prod
+        shell: bash
+
+      - name: Parse seed errors
+        id: parse_seed_errors
+        run: |
+          errors=""
+          # Check if the file exists
+          if [[ -f target/run_results.json ]]; then
+            # Parse the JSON and extract errors and failures
+            errors=$(jq -r '.results[] | select(.status == "error" or .status == "fail") | "Model: \(.unique_id)\nMessage: \(.message)"' target/run_results.json)
+          else
+            echo "run_results.json not found."
+            errors="run_results.json not found."
+          fi
+          if [[ -n "$errors" ]]; then
+            echo "slack_message=$errors" >> $GITHUB_ENV
+          fi
         shell: bash
 
       - name: Run dbt run
         id: run_dbt_models
         if: ${{ success() }}
         run: |
-          pipenv run dbt run --target prod 2>&1 | tee dbt_run_output.log
+          pipenv run dbt run --target prod
         shell: bash
 
-      - name: Extract errors
-        if: ${{ failure() }}
+      - name: Parse model errors
+        id: parse_model_errors
         run: |
-          # Extract errors and failures from final_warehouse_check.log
-          grep -iE 'ERROR|FAIL' final_warehouse_check.log | tail -n 10 > dbt_errors.log || echo "No errors found in final warehouse check" >> dbt_errors.log
-          # Extract errors and failures from dbt_seed_output.log
-          grep -iE 'ERROR|FAIL' dbt_seed_output.log | tail -n 10 >> dbt_errors.log || echo "No errors found in dbt seed" >> dbt_errors.log
-          # Extract errors and failures from dbt_run_output.log
-          grep -iE 'ERROR|FAIL' dbt_run_output.log | tail -n 10 >> dbt_errors.log || echo "No errors found in dbt run" >> dbt_errors.log
+          errors=""
+          # Check if the file exists
+          if [[ -f target/run_results.json ]]; then
+            # Parse the JSON and extract errors and failures
+            errors=$(jq -r '.results[] | select(.status == "error" or .status == "fail") | "Model: \(.unique_id)\nMessage: \(.message)"' target/run_results.json)
+          else
+            echo "run_results.json not found."
+            errors="run_results.json not found."
+          fi
+          if [[ -n "$errors" ]]; then
+            echo "slack_message=$errors" >> $GITHUB_ENV
+          fi
         shell: bash
 
       - name: Send Slack notification
         if: ${{ failure() }}
         run: |
-          # Check if the error log exists and read it
-          if [[ -f dbt_errors.log ]]; then
-            errors=$(cat dbt_errors.log | jq -R -s .)
-          else
-            errors="No error log found."
-          fi
-
-          echo "Slack payload errors: $errors"
-
-          # Build the JSON payload
-          payload=$(jq -n \
-            --arg title "${{ github.workflow }} job has failed" \
-            --arg text "The latest *production* run of dbt was unsuccessful.\n*Errors:*\n```$errors```" \
-            --arg url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
-            '{
-              "blocks": [
-                {
-                  "type": "header",
-                  "text": {
-                    "type": "plain_text",
-                    "text": $title
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": $text
-                  }
-                },
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "Full logs available on GitHub"
-                  },
-                  "accessory": {
-                    "type": "button",
-                    "text": {
-                      "type": "plain_text",
-                      "text": "Navigate to GitHub"
+          # Check if slack_message is set
+          if [[ -n "${{ env.slack_message }}" ]]; then
+            curl ${{ secrets.SLACK_DBT_NOTIFICATION_WEBHOOK_URL }} \
+              --request POST \
+              --header 'Content-type: application/json' \
+              --data \
+                '{
+                  "blocks": [
+                    {
+                      "type": "header",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "'"${{ github.workflow }} job has failed"'"
+                      }
                     },
-                    "style": "primary",
-                    "url": $url
-                  }
-                }
-              ]
-            }')
-
-          curl -X POST ${{ secrets.SLACK_DBT_NOTIFICATION_WEBHOOK_URL }} \
-            --header 'Content-type: application/json' \
-            --data "$payload"
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "The latest *production* run of dbt encountered the following errors:\n\n\`\`\`${{ env.slack_message }}\`\`\`"
+                      }
+                    },
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "Full logs available on GitHub"
+                      },
+                      "accessory": {
+                        "type": "button",
+                        "text": {
+                          "type": "plain_text",
+                          "text": "Navigate to GitHub"
+                        },
+                        "style": "primary",
+                        "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                      }
+                    }
+                  ]
+                }'
+          else
+            echo "No errors to report."
+          fi
+        shell: bash
 
 
           
