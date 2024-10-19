@@ -105,7 +105,7 @@ jobs:
         id: parse_model_errors
         run: |
           echo "Parsing error logs..."
-          errors=$(cat target/run_results.json | jq -r '.results[] | select(.status | (contains("fail") or contains("error"))) | .message')
+          errors=$(cat target/run_results.json | jq -r '.results[] | select(.status | (contains("fail") or contains("error") or contains("failure"))) | .message')
           if [[ -n "$errors" ]]; then
             slack_message="\"\`\`\`$(echo "$errors" | jq -s -R '.' | tr -d '"')\`\`\`\""
             echo "slack_message=$slack_message" >> $GITHUB_ENV
