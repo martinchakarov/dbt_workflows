@@ -123,7 +123,7 @@ jobs:
                     "type": "section",
                     "text": {
                       "type": "mrkdwn",
-                      "text": "The following errors prevented the pipeline from finishing successfully:\n```'"$errors"'```"
+                      "text": "The following errors prevented the pipeline from finishing successfully:\n```'\"$errors\"'```"
                     }
                   },
                     "accessory": {
