@@ -110,6 +110,7 @@ jobs:
         shell: bash
 
       - name: Parse model errors
+        if: ${{ failure() }}
         id: parse_model_errors
         run: |
           errors=""
