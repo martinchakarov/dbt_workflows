@@ -90,17 +90,9 @@ jobs:
         id: parse_seed_errors
         run: |
           echo "Parsing error logs."
-          errors=""
-          # Check if the file exists
-          if [[ -f target/run_results.json ]]; then
-            # Parse the JSON and extract errors and failures
-            errors=$(jq -R -s -c '.results[] | select(.status == "error" or .status == "fail") | "Model: \(.unique_id)\nMessage: \(.message)"' target/run_results.json)
-          else
-            echo "run_results.json not found."
-            errors="run_results.json not found."
-          fi
+          errors=$(cat target/run_results.json | jq '.results[] | select(.status | (contains("fail") or contains("error"))) | .message')
           if [[ -n "$errors" ]]; then
-            echo "slack_message=$(echo "$errors" | jq -R .)" >> $GITHUB_ENV
+            echo "slack_message=$(echo "$errors")" >> $GITHUB_ENV
           fi
         shell: bash
 
@@ -116,17 +108,9 @@ jobs:
         id: parse_model_errors
         run: |
           echo "Parsing error logs."
-          errors=""
-          # Check if the file exists
-          if [[ -f target/run_results.json ]]; then
-            # Parse the JSON and extract errors and failures
-            errors=$(jq -R -s -c '.results[] | select(.status == "error" or .status == "fail") | "Model: \(.unique_id)\nMessage: \(.message)"' target/run_results.json)
-          else
-            echo "run_results.json not found."
-            errors="run_results.json not found."
-          fi
+          errors=$(cat target/run_results.json | jq '.results[] | select(.status | (contains("fail") or contains("error"))) | .message')
           if [[ -n "$errors" ]]; then
-            echo "slack_message=$(echo "$errors" | jq -R .)" >> $GITHUB_ENV
+            echo "slack_message=$(echo "$errors")" >> $GITHUB_ENV
           fi
         shell: bash
 
