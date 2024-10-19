@@ -47,8 +47,8 @@ jobs:
       - name: Wait before retrying warehouse check
         if: ${{ env.check_result == 'warning' }}
         run: |
-          echo "Warehouse is active, waiting for 3 minutes before re-checking."
-          sleep 180
+          echo "Warehouse is active, waiting for 10 seconds before re-checking."
+          sleep 10
 
       - name: Check ingestion warehouse status (2nd attempt)
         if: ${{ env.check_result == 'warning' }}
@@ -67,8 +67,8 @@ jobs:
       - name: Wait before retrying warehouse check
         if: ${{ env.check_result == 'warning' }}
         run: |
-          echo "Warehouse is still active, waiting for 3 minutes before final attempt."
-          sleep 180
+          echo "Warehouse is still active, waiting for 10 seconds before final attempt."
+          sleep 10
 
       - name: Check ingestion warehouse status (final attempt)
         if: ${{ env.check_result == 'warning' }}
@@ -80,10 +80,10 @@ jobs:
         shell: bash
 
       - name: Parse ingestion warehouse error
-        if: ${{ failure() }}
+        if: steps.final_check.conclusion == 'failure'
         run: |
           echo "Parsing error."
-          slack_message="The pipeline was stopped because the ingestion warehouse is active or hasn't been resumed in the defined timeframe."
+          slack_message="\"\`\`\`$(echo "The pipeline was stopped because the ingestion warehouse is active or hasn't been resumed in the defined timeframe." | jq -s -R '.' | tr -d '"')\`\`\`\""
           echo "slack_message=$slack_message" >> $GITHUB_ENV
 
       - name: Run dbt seed
@@ -94,7 +94,7 @@ jobs:
         shell: bash
 
       - name: Parse seed errors
-        if: ${{ failure() }}
+        if: steps.run_dbt_seed.conclusion == 'failure'
         id: parse_seed_errors
         run: |
           echo "Parsing error logs."
@@ -113,7 +113,7 @@ jobs:
         shell: bash
 
       - name: Parse model errors
-        if: ${{ failure() }}
+        if: steps.run_dbt_models.conclusion == 'failure'
         id: parse_model_errors
         run: |
           echo "Parsing error logs."
@@ -151,7 +151,7 @@ jobs:
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": ${{ env.slack_message }}
+                        "text": ${{ env.slack_message || 'Unknown error - check GitHub logs for details.' }}
                       }
                     },
                     {
