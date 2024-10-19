@@ -1,0 +1,10 @@
+[0m11:16:55  Running with dbt=1.7.9
+[0m11:16:55  Registered adapter: snowflake=1.7.2
+[0m11:16:55  Found 1 seed, 0 sources, 0 exposures, 0 metrics, 550 macros, 0 groups, 0 semantic models
+[0m11:16:55  Checking the state of the ingestion warehouse...
+[0m11:16:55  Will check for the following criteria:
+[0m11:16:55  - The ingestion warehouse is currently suspended.
+[0m11:16:55  INFO: Configured to FAIL if the activity check fails.
+[0m11:16:57  The current state of the ingestion warehouse is SUSPENDED.
+[0m11:16:57  The ingestion warehouse was last resumed at 2024-10-19 14:14:10. (2 minutes ago)
+[0m11:16:57  All criteria have been met. Proceeding with next steps.

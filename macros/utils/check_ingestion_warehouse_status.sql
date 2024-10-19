@@ -49,14 +49,12 @@
             {{ exceptions.raise_compiler_error('The ingestion warehouse is still active. Failing the job.') }}
         {% else %}
             {{ log("WARNING: The ingestion warehouse is still active.", info = True)}}
-            {{ return('warehouse_active') }}
         {% endif %}
     {% endif %}
     
     {# return 'success' and proceed when all checks have passed #}
     {% if status_condition and state == 'SUSPENDED' %}
         {{ log("All criteria have been met. Proceeding with next steps.", info = True)}}
-        {{ return('success')}}
     {% endif %}
 
   {% endif %}
