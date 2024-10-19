@@ -117,6 +117,13 @@ jobs:
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
+                        "text": "The latest *${{ github.workflow }}* job has failed due to the following error(s):"
+                      }
+                    },
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
                         "text": ${{ env.slack_message }}
                       }
                     },
@@ -124,16 +131,18 @@ jobs:
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": "Full logs available on GitHub"
+                        "text": "Full logs available on GitHub."
                       },
                       "accessory": {
                         "type": "button",
                         "text": {
                           "type": "plain_text",
-                          "text": "Navigate to GitHub"
+                          "text": "Navigate to GitHub",
+                          "emoji": true
                         },
-                        "style": "primary",
-                        "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+                        "value": "click_me_123",
+                        "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+                        "action_id": "button-action"
                       }
                     }
                   ]
