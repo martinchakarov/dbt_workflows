@@ -24,15 +24,18 @@ jobs:
           cache: 'pipenv'
       - name: Install Pipenv
         run: |
+          echo "Installing Pipenv..."
           pip install --user pipenv
           pipenv install
       - name: Install dbt dependencies
         run: | 
+          echo "Installing dbt dependencies..."
           pipenv run dbt deps --target ${{ env.TARGET }}
 
       - name: Check ingestion warehouse status (initial check)
         id: check_initial
         run: | 
+          echo "Checking the status of the ingesting warehouse..."
           result=$(pipenv run dbt run-operation check_ingestion_warehouse_status --target ${{ env.TARGET }} --args '{"fail_when_active": false}')
           echo "$result"
           if echo "$result" | grep -q 'WARNING: The ingestion warehouse is still active.'; then
@@ -53,6 +56,7 @@ jobs:
       - name: Check ingestion warehouse status (2nd attempt)
         if: ${{ env.check_result == 'warning' }}
         run: | 
+          echo "Checking the status of the ingesting warehouse..."
           result=$(pipenv run dbt run-operation check_ingestion_warehouse_status --target ${{ env.TARGET }} --args '{"fail_when_active": false}')
           echo "$result"
           if echo "$result" | grep -q 'WARNING: The ingestion warehouse is still active.'; then
@@ -74,13 +78,14 @@ jobs:
         if: ${{ env.check_result == 'warning' }}
         id: final_check
         run: |
+          echo "Checking the status of the ingesting warehouse..."
           pipenv run dbt run-operation check_ingestion_warehouse_status --target ${{ env.TARGET }} --args '{"fail_when_active": true}' 2>&1 | tee final_warehouse_check.log
         env:
           INGESTION_WAREHOUSE: ${{ secrets.INGESTION_WAREHOUSE }}
         shell: bash
 
       - name: Parse ingestion warehouse error
-        if: steps.final_check.conclusion == 'failure'
+        if: steps.final_check.outcome == 'failure'
         run: |
           echo "Parsing error."
           slack_message="\"\`\`\`$(echo "The pipeline was stopped because the ingestion warehouse is active or hasn't been resumed in the defined timeframe." | jq -s -R '.' | tr -d '"')\`\`\`\""
@@ -90,14 +95,15 @@ jobs:
         if: ${{ success() }}
         id: run_dbt_seed
         run: |
+          echo "Running dbt seed..."
           pipenv run dbt seed --target ${{ env.TARGET }}
         shell: bash
 
       - name: Parse seed errors
-        if: steps.run_dbt_seed.conclusion == 'failure'
+        if: steps.run_dbt_seed.outcome == 'failure'
         id: parse_seed_errors
         run: |
-          echo "Parsing error logs."
+          echo "Parsing error message..."
           errors=$(cat target/run_results.json | jq -r '.results[] | select(.status | (contains("fail") or contains("error"))) | .message')
           if [[ -n "$errors" ]]; then
             slack_message="\"\`\`\`$(echo "$errors" | jq -s -R '.' | tr -d '"')\`\`\`\""
@@ -109,14 +115,15 @@ jobs:
         id: run_dbt_models
         if: ${{ success() }}
         run: |
+          echo "Running dbt models..."
           pipenv run dbt run --target ${{ env.TARGET }}
         shell: bash
 
       - name: Parse model errors
-        if: steps.run_dbt_models.conclusion == 'failure'
+        if: steps.run_dbt_models.outcome == 'failure'
         id: parse_model_errors
         run: |
-          echo "Parsing error logs."
+          echo "Parsing error logs..."
           errors=$(cat target/run_results.json | jq -r '.results[] | select(.status | (contains("fail") or contains("error"))) | .message')
           if [[ -n "$errors" ]]; then
             slack_message="\"\`\`\`$(echo "$errors" | jq -s -R '.' | tr -d '"')\`\`\`\""
@@ -127,53 +134,54 @@ jobs:
       - name: Send Slack notification
         if: ${{ failure() }}
         run: |
-            curl ${{ secrets.SLACK_DBT_NOTIFICATION_WEBHOOK_URL }} \
-              --request POST \
-              --header 'Content-type: application/json' \
-              --data \
-                '{
-                  "blocks": [
-                    {
-                      "type": "header",
+          echo "Sending Slack notification..."
+          curl ${{ secrets.SLACK_DBT_NOTIFICATION_WEBHOOK_URL }} \
+            --request POST \
+            --header 'Content-type: application/json' \
+            --data \
+              '{
+                "blocks": [
+                  {
+                    "type": "header",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "${{ github.workflow }} job has failed"
+                    }
+                  },
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "The latest *${{ github.workflow }}* job has failed due to the following error(s):"
+                    }
+                  },
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": ${{ env.slack_message || "Unknown error - check GitHub logs for details." }}
+                    }
+                  },
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "Full logs available on GitHub."
+                    },
+                    "accessory": {
+                      "type": "button",
                       "text": {
                         "type": "plain_text",
-                        "text": "${{ github.workflow }} job has failed"
-                      }
-                    },
-                    {
-                      "type": "section",
-                      "text": {
-                        "type": "mrkdwn",
-                        "text": "The latest *${{ github.workflow }}* job has failed due to the following error(s):"
-                      }
-                    },
-                    {
-                      "type": "section",
-                      "text": {
-                        "type": "mrkdwn",
-                        "text": ${{ env.slack_message || 'Unknown error - check GitHub logs for details.' }}
-                      }
-                    },
-                    {
-                      "type": "section",
-                      "text": {
-                        "type": "mrkdwn",
-                        "text": "Full logs available on GitHub."
+                        "text": "Navigate to GitHub",
+                        "emoji": true
                       },
-                      "accessory": {
-                        "type": "button",
-                        "text": {
-                          "type": "plain_text",
-                          "text": "Navigate to GitHub",
-                          "emoji": true
-                        },
-                        "value": "click_me_123",
-                        "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
-                        "action_id": "button-action"
-                      }
+                      "value": "click_me_123",
+                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+                      "action_id": "button-action"
                     }
-                  ]
-                }'
+                  }
+                ]
+              }'
         shell: bash
 
 
