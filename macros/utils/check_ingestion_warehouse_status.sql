@@ -18,7 +18,7 @@
     {{ log('- The ingestion warehouse is currently suspended.', info=True) }}
 
     {% set action = 'fail' if fail_when_active else 'warn' %}
-    {{ log('INFO: Configured to ' ~ action | upper ~ 'if the activity check fails.', info=True )}}
+    {{ log('INFO: Configured to ' ~ action | upper ~ ' if the activity check fails.', info=True )}}
     
   {% endif %}
 
