@@ -136,7 +136,7 @@ jobs:
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": "${{ env.slack_message }}"
+                        "text": ${{ env.slack_message }}
                       }
                     },
                     {
