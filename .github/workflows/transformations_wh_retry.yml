@@ -117,8 +117,6 @@ jobs:
       - name: Send Slack notification
         if: ${{ failure() }}
         run: |
-          # Check if slack_message is set
-          if [[ -n "${{ env.slack_message }}" ]]; then
             curl ${{ secrets.SLACK_DBT_NOTIFICATION_WEBHOOK_URL }} \
               --request POST \
               --header 'Content-type: application/json' \
@@ -157,9 +155,6 @@ jobs:
                     }
                   ]
                 }'
-          else
-            echo "No errors to report."
-          fi
         shell: bash
 
 
