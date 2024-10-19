@@ -100,12 +100,12 @@ jobs:
           pipenv run dbt test --target ${{ env.TARGET }}
         shell: bash
 
-      - name: Parse model errors
+      - name: Parse test errors
         if: ${{ failure() && steps.test_dbt_models.outcome == 'failure' }}
-        id: parse_model_errors
+        id: parse_test_errors
         run: |
           echo "Parsing error logs..."
-          errors=$(cat target/run_results.json | jq -r '.results[] | select(.status | (contains("fail") or contains("error") or contains("failure"))) | .message')
+          errors=$(cat target/run_results.json | jq -r '.results[] | select(.status | (contains("fail") or contains("error"))) | "\(.unique_id): \(.message)\n\n"')
           if [[ -n "$errors" ]]; then
             slack_message="\"\`\`\`$(echo "$errors" | jq -s -R '.' | tr -d '"')\`\`\`\""
             echo "slack_message=$slack_message" >> $GITHUB_ENV
