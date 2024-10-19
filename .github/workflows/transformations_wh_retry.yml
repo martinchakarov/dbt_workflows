@@ -113,6 +113,8 @@ jobs:
             errors="No error log found."
           fi
 
+          echo "Slack payload errors: $errors"
+
           # Build the JSON payload
           payload=$(jq -n \
             --arg title "${{ github.workflow }} job has failed" \
@@ -153,12 +155,9 @@ jobs:
               ]
             }')
 
-          # Send the payload to Slack
           curl -X POST ${{ secrets.SLACK_DBT_NOTIFICATION_WEBHOOK_URL }} \
             --header 'Content-type: application/json' \
             --data "$payload"
 
-      - name: Debug Slack payload
-        run: |
-          errors=$(cat dbt_errors.log | jq -R -s .)
-          echo "Slack payload errors: $errors"
+
+          
