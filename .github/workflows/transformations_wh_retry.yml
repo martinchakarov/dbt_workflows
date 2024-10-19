@@ -71,21 +71,37 @@ jobs:
 
       - name: Check ingestion warehouse status (final attempt)
         if: ${{ env.check_result == 'warning' }}
-        run: | 
-          pipenv run dbt run-operation check_ingestion_warehouse_status --target prod --args '{"fail_when_active": true}'
+        id: final_check
+        run: |
+          pipenv run dbt run-operation check_ingestion_warehouse_status --target prod --args '{"fail_when_active": true}' 2>&1 | tee final_warehouse_check.log
         env:
           INGESTION_WAREHOUSE: ${{ secrets.INGESTION_WAREHOUSE }}
+        shell: bash
 
-      - name: Run and test models
+      - name: Run dbt seed
+        if: ${{ success() }}
+        id: run_dbt_seed
+        run: |
+          pipenv run dbt seed --target prod 2>&1 | tee dbt_seed_output.log
+        shell: bash
+
+      - name: Run dbt run
+        id: run_dbt_models
         if: ${{ success() }}
         run: |
-          pipenv run dbt build --target prod
+          pipenv run dbt run --target prod 2>&1 | tee dbt_run_output.log
+        shell: bash
 
-      - name: Cache manifest file
-        uses: actions/cache/save@v4
-        with:
-          path: target/manifest.json
-          key: manifest-${{ github.run_id }}
+      - name: Extract errors
+        if: ${{ failure() }}
+        run: |
+          # Extract errors and failures from final_warehouse_check.log
+          grep -iE 'ERROR|FAIL' final_warehouse_check.log | tail -n 10 > dbt_errors.log || echo "No errors found in final warehouse check" >> dbt_errors.log
+          # Extract errors and failures from dbt_seed_output.log
+          grep -iE 'ERROR|FAIL' dbt_seed_output.log | tail -n 10 >> dbt_errors.log || echo "No errors found in dbt seed" >> dbt_errors.log
+          # Extract errors and failures from dbt_run_output.log
+          grep -iE 'ERROR|FAIL' dbt_run_output.log | tail -n 10 >> dbt_errors.log || echo "No errors found in dbt run" >> dbt_errors.log
+        shell: bash
 
       - name: Send Slack notification
         if: ${{ failure() }}
@@ -107,15 +123,9 @@ jobs:
                     "type": "section",
                     "text": {
                       "type": "mrkdwn",
-                      "text": "The latest *production* run of dbt was unsuccessful."
+                      "text": "The following errors prevented the pipeline from finishing successfully:\n```'"$errors"'```"
                     }
                   },
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "Full logs available on GitHub"
-                    },
                     "accessory": {
                       "type": "button",
                       "text": {

@@ -40,13 +40,13 @@
 
     {# throw error if data is stale #}
     {% if freshness_condition and diff > var('max_data_age_in_minutes') %}
-        {{ exceptions.raise_compiler_error('The ingestion warehouse has been inactive for more than '~ var('max_data_age_in_minutes') ~ ' minutes' ~'.') }}
+        {{ exceptions.raise_compiler_error('FAIL: The ingestion warehouse has been inactive for more than '~ var('max_data_age_in_minutes') ~ ' minutes' ~'.') }}
     {% endif%}
 
     {# either throw error or issue warning and return 'warehouse_active' when the warehouse is still active #}
     {% if status_condition and state != 'SUSPENDED' %}
         {% if fail_when_active %}
-            {{ exceptions.raise_compiler_error('The ingestion warehouse is still active. Failing the job.') }}
+            {{ exceptions.raise_compiler_error('FAIL: The ingestion warehouse is still active.') }}
         {% else %}
             {{ log("WARNING: The ingestion warehouse is still active.", info = True)}}
         {% endif %}
