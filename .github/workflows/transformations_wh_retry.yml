@@ -159,7 +159,7 @@ jobs:
                     "type": "section",
                     "text": {
                       "type": "mrkdwn",
-                      "text": ${{ env.slack_message || \"Unknown error - check GitHub logs for details.\" }}
+                      "text": ${{ env.slack_message }}
                     }
                   },
                   {
