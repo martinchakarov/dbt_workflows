@@ -127,14 +127,14 @@ jobs:
                       "type": "header",
                       "text": {
                         "type": "plain_text",
-                        "text": "'"${{ github.workflow }} job has failed"'"
+                        "text": "${{ github.workflow }} job has failed"
                       }
                     },
                     {
                       "type": "section",
                       "text": {
                         "type": "mrkdwn",
-                        "text": "The latest *production* run of dbt encountered the following errors:\n\n\`\`\`${{ env.slack_message }}\`\`\`"
+                        "text": ${{ env.slack_message }}
                       }
                     },
                     {
