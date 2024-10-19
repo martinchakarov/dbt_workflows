@@ -106,41 +106,59 @@ jobs:
       - name: Send Slack notification
         if: ${{ failure() }}
         run: |
-          errors=$(cat dbt_errors.log | jq -R -s .)
-          curl ${{ secrets.SLACK_DBT_NOTIFICATION_WEBHOOK_URL }} \
-            --request POST \
-            --header 'Content-type: application/json' \
-            --data \
-              '{
-                "blocks": [
-                  {
-                    "type": "header",
+          # Check if the error log exists and read it
+          if [[ -f dbt_errors.log ]]; then
+            errors=$(cat dbt_errors.log | jq -R -s .)
+          else
+            errors="No error log found."
+          fi
+
+          # Build the JSON payload
+          payload=$(jq -n \
+            --arg title "${{ github.workflow }} job has failed" \
+            --arg text "The latest *production* run of dbt was unsuccessful.\n*Errors:*\n```$errors```" \
+            --arg url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            '{
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": $title
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": $text
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Full logs available on GitHub"
+                  },
+                  "accessory": {
+                    "type": "button",
                     "text": {
                       "type": "plain_text",
-                      "text": "${{ github.workflow }} job has failed"
-                    }
-                  },
-                  {
-                    "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "The latest *production* run of dbt was unsuccessful.\n*Errors:*\n```'"$errors"'```"
-                    }
-                  },
-                    "accessory": {
-                      "type": "button",
-                      "text": {
-                        "type": "plain_text",
-                        "text": "Navigate to GitHub"
-                      },
-                      "style": "primary",
-                      "url": "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-                    }
+                      "text": "Navigate to GitHub"
+                    },
+                    "style": "primary",
+                    "url": $url
                   }
-                ]
-              }'
+                }
+              ]
+            }')
+
+          # Send the payload to Slack
+          curl -X POST ${{ secrets.SLACK_DBT_NOTIFICATION_WEBHOOK_URL }} \
+            --header 'Content-type: application/json' \
+            --data "$payload"
+
       - name: Debug Slack payload
-        if: ${{ failure() }}
         run: |
           errors=$(cat dbt_errors.log | jq -R -s .)
           echo "Slack payload errors: $errors"
