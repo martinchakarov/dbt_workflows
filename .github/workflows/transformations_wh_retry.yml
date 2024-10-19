@@ -40,9 +40,9 @@ jobs:
         if: ${{ steps.check_initial.outputs.result == 'warehouse_active' }}
         run: |
           echo "Warehouse is active, waiting for 5 minutes before re-checking."
+          sleep 300 
         timeout-minutes: 10 
         continue-on-error: false 
-        run: sleep 300 
 
       - name: Check ingestion warehouse status (retry)
         if: ${{ steps.check_initial.outputs.result == 'warehouse_active' }}
