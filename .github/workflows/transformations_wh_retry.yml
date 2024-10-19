@@ -106,7 +106,7 @@ jobs:
       - name: Send Slack notification
         if: ${{ failure() }}
         run: |
-          errors=$(cat dbt_errors.log)
+          errors=$(cat dbt_errors.log | jq -R -s .)
           curl ${{ secrets.SLACK_DBT_NOTIFICATION_WEBHOOK_URL }} \
             --request POST \
             --header 'Content-type: application/json' \
@@ -124,7 +124,7 @@ jobs:
                     "type": "section",
                     "text": {
                       "type": "mrkdwn",
-                      "text": "The following errors prevented the pipeline from finishing successfully:\n```'$errors'```"
+                      "text": "The latest *production* run of dbt was unsuccessful.\n*Errors:*\n```'"$errors"'```"
                     }
                   },
                     "accessory": {
