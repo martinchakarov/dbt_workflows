@@ -139,3 +139,8 @@ jobs:
                   }
                 ]
               }'
+      - name: Debug Slack payload
+        if: ${{ failure() }}
+        run: |
+          errors=$(cat dbt_errors.log | jq -R -s .)
+          echo "Slack payload errors: $errors"
